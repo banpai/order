@@ -1,27 +1,31 @@
-//index.js
-//获取应用实例
-var app = getApp()
+function _next() {
+  var that = this;
+  if (this.data.progress >= 100) {
+    this.setData({
+      disabled: false
+    });
+    return true;
+  }
+  this.setData({
+    progress: ++this.data.progress
+  });
+  setTimeout(function () {
+    _next.call(that);
+  }, 20);
+}
+
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {}
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+    progress: 0,
+    disabled: false
   },
   onLoad: function () {
-    console.log('onLoad')
-    var that = this
-    
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo){
-      //更新数据
-      that.setData({
-        userInfo:userInfo
-      })
-    })
+    if (this.data.disabled) return;
+
+    this.setData({
+      progress: 0,
+      disabled: true
+    });
+    _next.call(this);
   }
-})
+});
