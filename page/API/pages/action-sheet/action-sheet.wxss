@@ -1,0 +1,6 @@
+.a {
+  background: #000000;
+}
+.a .b {
+  background: red;
+}
