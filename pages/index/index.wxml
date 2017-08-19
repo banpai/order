@@ -87,7 +87,7 @@
           </view>
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
-      <view class="weui-cell">
+      <view class="weui-cell"  bindtap="seeMap">
           <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
               <image src="../../images/2.png" class="ic"/>
           </view>
@@ -96,7 +96,7 @@
           </view>
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
-      <view class="weui-cell">
+      <view class="weui-cell"  bindtap="tapCall">
           <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
               <image src="../../images/3.png" class="ic"/>
           </view>
