@@ -1,0 +1,9 @@
+<import src = "../common/orderPage.wxml"/>
+
+<view class="container" disable-scroll="true">
+  <view style="{{height}}" class="swiper" current="{{currentPage}}" bindchange="turnTitle">
+    <swiper-item id="orderPage">
+      <template is="orderPage" data="{{menu,selected,howMuch,cost,pullBar}}"/>
+    </swiper-item>
+  </view>
+</view>

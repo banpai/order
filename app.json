@@ -1,12 +1,19 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/dc/dc",
+    "pages/yd/yd",
+    "pages/pd/pd",
+    "pages/wm/wm",
+    "pages/wd/wd",
+    "pages/state/state"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"#fff",
+    "navigationBarTitleText": "点餐",
+    "navigationBarBackgroundColor": "#F1544E",
+    "backgroundColor": "#F1544E"
   }
 }
