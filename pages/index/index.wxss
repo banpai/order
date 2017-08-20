@@ -10,7 +10,7 @@
   content: none;
 }
 .header .weui-media-box__title {
-  margin-top: -53rpx;
+  margin-top: -20rpx;
 }
 .header .he_xx .xx_icon {
   float: left;

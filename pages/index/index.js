@@ -1,47 +1,49 @@
-//index.js
 //获取应用实例
 var app = getApp()
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {}
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+    "cesh": [1, 1, 1]
   },
   //查看地图
-  seeMap: function(){
-    wx.getLocation({
-      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-      success: function(res) {
-        var latitude = res.latitude
-        var longitude = res.longitude
-        wx.openLocation({
-          latitude: latitude,
-          longitude: longitude,
-          scale: 28
-        })
-      }
+  seeMap: function () {
+    var that = this;
+    wx.openLocation({
+      latitude: that.data.info.latitude,
+      longitude: that.data.info.longitude,
+      scale: 28
     })
   },
   //打电话
-  tapCall: function(){
+  tapCall: function () {
+    var that = this;
     wx.makePhoneCall({
-      phoneNumber: '15698745632' //仅为示例，并非真实的电话号码
+      phoneNumber: that.data.info.tel
     })
   },
+  //初始化
   onLoad: function () {
-    console.log('onLoad')
     var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo){
-      //更新数据
+    console.log(app.globalData.dcmenu);
+    //获取数据
+    app.ajax(app.ceport.index, {}, function (res) {
+      //渲染其他数据
       that.setData({
-        userInfo:userInfo
+        info: res.data
       })
-    })
+      //渲染星星的个数
+      var starlevel = [];
+      if (res.data.level > 0) {
+        var i, len;
+        for (i = 1, len = res.data.level; i <= len; i++) {
+          starlevel.push(1);
+        }
+        if(i = len){
+          that.setData({
+            info: res.data,
+            starlevel: starlevel
+          })
+        }
+      }
+    });
   }
 })
