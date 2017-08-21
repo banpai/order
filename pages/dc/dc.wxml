@@ -36,7 +36,7 @@
           <view class="cost" hidden="{{cost==0}}">￥{{cost}}</view>
           <view class="free"></view>
         </view>
-        <view class="pay">{{cost!=0?'选好了':'选好了'}}</view>
+        <view class="pay" bindtap="buy">{{cost!=0?'选好了':'选好了'}}</view>
       </view>
     </swiper-item>
   </view>

@@ -68,7 +68,13 @@ App({
     //主页信息接口
     index: "https://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/index",
     //菜单信息
-    menu: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/menu"
+    menu: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/menu",
+    //状态接口
+    wd: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/state",
+    //获取我的订单数据
+    state: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/stateq",
+    //支付页面
+    payment: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/payment"
   },
   globalData: {
     menu: {

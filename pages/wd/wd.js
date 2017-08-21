@@ -8,8 +8,22 @@ Page({
         sliderLeft: 0
     },
     onLoad: function () {
-        console.log(app.globalData.jj);
         var that = this;
+        //获取数据
+        app.ajax(app.ceport.wd, {}, function (res) {
+            console.log(res);
+            var tabs = that.tabs;
+            var activeIndex = that.activeIndex;
+            var sliderOffset = that.sliderOffset;
+            var sliderLeft = that.sliderLeft;
+            that.setData({
+                tabs: tabs,
+                activeIndex: activeIndex,
+                sliderOffset: sliderOffset,
+                sliderLeft: sliderLeft,
+                state: res.data
+            });
+        });
         wx.getSystemInfo({
             success: function(res) {
                 that.setData({
