@@ -11,7 +11,8 @@
     "pages/payment/payment",
     "pages/payment/msg_success",
     "pages/payment/msg_fail",
-    "pages/dcxz/dcxz"
+    "pages/dcxz/dcxz",
+    "pages/dcxz/dcxzwm"
   ],
   "window":{
     "backgroundTextStyle":"light",
