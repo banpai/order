@@ -49,11 +49,15 @@ App({
     })
   },
   //封装获取数据的方式
-  ajax: function (url, data, fun) {
+  ajax: function (url, data, fun, post) {
+    var method = "GET";
+    if(post){
+      method = "POST";
+    }
     //获取数据
     wx.request({
       url: url,
-      method: "GET",
+      method: method,
       data: data,
       header: {
         'content-type': 'application/json'
@@ -74,7 +78,9 @@ App({
     //获取我的订单数据
     state: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/stateq",
     //支付页面
-    payment: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/payment"
+    payment: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/payment",
+    //待支付页面
+    dcxz: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/dcxz"
   },
   globalData: {
     menu: {

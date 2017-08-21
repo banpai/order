@@ -117,8 +117,10 @@ Page({
   buy: function () {
     //选好了，点击购买
     var url = '../dcxz/dcxz';
-    wx.redirectTo({
-      url: url
-    });
+    if(this.data.cost != 0){
+      wx.redirectTo({
+        url: url
+      });
+    }
   }
 })
