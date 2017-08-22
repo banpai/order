@@ -2,17 +2,17 @@
 var app = getApp()
 
 //封装tusi
-function tusi(str, flag, fun){
+function tusi(str, flag, fun) {
   var icon = 'loading';
-  if(flag){
+  if (flag) {
     icon = 'success';
   }
   wx.showToast({
     title: str,
     icon: icon,
     duration: 2000,
-    complete: function(){
-      if(fun){
+    complete: function () {
+      if (fun) {
         fun();
       }
     }
@@ -35,18 +35,18 @@ Page({
     time: '00:00'
   },
   //单列时间选择器
-  bindPickerChange: function(e) {
-    var that = this; 
+  bindPickerChange: function (e) {
+    var that = this;
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-        index: e.detail.value,
-        endtime: that.data[e.detail.value]
+      index: e.detail.value,
+      endtime: that.data[e.detail.value]
     })
   },
-  bindTimeChange: function(e) {
-      this.setData({
-          time: e.detail.value
-      })
+  bindTimeChange: function (e) {
+    this.setData({
+      time: e.detail.value
+    })
   },
   //打电话
   tapCall: function () {
@@ -62,13 +62,13 @@ Page({
     //获取数据
     wx.getStorage({
       key: 'letdata',
-      success: function(res) {
+      success: function (res) {
         console.log(res.data)
         var infodata = JSON.parse(res.data);
         that.setData({
           dcxz: infodata
         })
-      } 
+      }
     });
     //获取缓存数据
     wx.getStorage({
@@ -82,8 +82,8 @@ Page({
         //   radioItems[i].checked = radioItems[i].value == infodata.sex;
         // }
         var xzdzname = "请选择收货地址";
-        if(infodata.address && infodata.address != ''){
-          if(infodata.addrdetail && infodata.addrdetail != ''){
+        if (infodata.address && infodata.address != '') {
+          if (infodata.addrdetail && infodata.addrdetail != '') {
             xzdzname = infodata.address + infodata.addrdetail;
           }
         }
@@ -109,50 +109,69 @@ Page({
     });
   },
   //请选择收货地址
-  skipdz: function(){
+  skipdz: function () {
     var url = "dcxzinput"
     wx.redirectTo({
       url: 'dcxzinput'
     })
   },
   //提交订单
-  sub: function(e){
+  sub: function (e) {
     var that = this;
     console.log(this.data.name);
-    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/; 
-    if(this.data.name === ''){
+    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+    if (this.data.name === '') {
       tusi('请填写姓名');
-    }else if(this.data.tel === ''){
+    } else if (this.data.tel === '') {
       tusi('请填写手机号');
-    }else if(!myreg.test(that.data.tel)){
+    } else if (!myreg.test(that.data.tel)) {
       tusi('请输入有效的手机号');
-    }else{
-      //差一个post提交数据
-      var appid = app.getAppid();
-      var flag = '0';
-      var id = '1';
-      var url = '../payment/payment?id=' + id;
-      tusi('提交成功', true, function(){
-        wx.redirectTo({
-          url: url
-        })
+    } else {
+      //整理post的提交数据
+      var postData = that.data.dcxz;
+      app.getAppid(function (appid) {
+        postData.appid = appid;
+        postData.flag = "0";
+        postData.userinfo = {
+          name: that.data.name,
+          tel: that.data.tel,
+          sex: that.data.sex,
+          address: that.data.address,
+          addrdetail:  that.data.addrdetail,
+          bz: that.data.bz,
+          servicetime: that.data.time
+        };
+        var postdatastr = JSON.stringify(postData);
+        console.log(postdatastr);
+        app.ajax(app.ceport.podc, postdatastr, function (m) {
+          //这边支付接口传回的参数需要重新处理
+          console.log(m);
+          var id = '0';
+          var url = '../payment/payment?id=' + id;
+          tusi('提交成功', true, function () {
+            wx.redirectTo({
+              url: url
+            })
+          });
+        }, true);
       });
     }
   },
   //同步姓名
-  wname: function(e){
+  wname: function (e) {
     this.setData({
       name: e.detail.value
     })
   },
   //电话
-  tel: function(e){
+  tel: function (e) {
     this.setData({
       tel: e.detail.value
     })
   },
   //同步备注
-  bindTextAreaBlur: function(e){
+  bindTextAreaBlur: function (e) {
+    console.log(e.detail.value);
     this.setData({
       bz: e.detail.value
     })

@@ -57,7 +57,7 @@
   <view class="weui-cells weui-cells_after-title">
     <view class="weui-cell">
       <view class="weui-cell__bd">
-        <textarea bindblur="bindTextAreaBlur" class="weui-textarea" placeholder="请输入备注（可不填写）" style="height: 3.3em" value="{{bz}}"/>
+        <textarea bindinput="bindTextAreaBlur" class="weui-textarea" placeholder="请输入备注（可不填写）" style="height: 3.3em" value="{{bz}}"/>
       </view>
     </view>
   </view>
