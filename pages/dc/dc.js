@@ -13,6 +13,7 @@ Page({
   },
   //增加吃的
   addToTrolley: function (e) {
+    
     var info = this.data.menu;
     info[this.data.selected].menuContent[e.currentTarget.dataset.index].numb++;
     this.data.number = + this.data.number + 1;
