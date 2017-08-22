@@ -32,7 +32,7 @@
     <navigator url="../../pages/dc/dc?flag=0" class="weui-flex__item nb_li" hover-class="weui-cell_active">
       <view class="placeholder nb_lid">
         <view class="nb_icon">
-          <image class="ic" src="../../images/xx.jpg" />
+          <image class="ic" src="../../images/001.jpg" />
         </view>
         <view class="nb_text">点餐</view>
       </view>
@@ -40,7 +40,7 @@
     <navigator url="../../pages/yd/yd" class="weui-flex__item nb_li" hover-class="weui-cell_active">
       <view class="placeholder nb_lid">
         <view class="nb_icon">
-          <image class="ic" src="../../images/xx.jpg" />
+          <image class="ic" src="../../images/002.png" />
         </view>
         <view class="nb_text">预定</view>
       </view>
@@ -48,7 +48,7 @@
     <navigator url="../../pages/pd/pd" class="weui-flex__item nb_li" hover-class="weui-cell_active">
       <view class="placeholder nb_lid">
         <view class="nb_icon">
-          <image class="ic" src="../../images/xx.jpg" />
+          <image class="ic" src="../../images/003.jpg" />
         </view>
         <view class="nb_text">排队</view>
       </view>
@@ -56,7 +56,7 @@
     <navigator url="../../pages/dc/dc?flag=1" class="weui-flex__item nb_li" hover-class="weui-cell_active">
       <view class="placeholder nb_lid">
         <view class="nb_icon">
-          <image class="ic" src="../../images/xx.jpg" />
+          <image class="ic" src="../../images/004.jpg" />
         </view>
         <view class="nb_text">外卖</view>
       </view>

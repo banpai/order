@@ -6,7 +6,7 @@
         <view style="display: inline-block; vertical-align: middle;color: #d9d9d9;">{{dcxz.name}}</view>
       </view>
     </view>
-    <view class="weui-cell weui-cell_access" wx:for="{{dcxz.menu}}" wx:key="">
+    <view class="weui-cell weui-cell_access" wx:for="{{dcxz.order}}" wx:key="">
       <view class="weui-cell__bd">
         <view style="display: inline-block; vertical-align: middle">{{item.name}}</view>
       </view>
@@ -29,7 +29,7 @@
         <view class="weui-label">姓名</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" placeholder="请输入姓名" bindinput="wname"/>
+        <input class="weui-input" placeholder="请输入姓名" bindinput="wname" value="{{name}}"/>
       </view>
     </view>
       <radio-group bindchange="radioChange" class="weui-cellt">
@@ -46,7 +46,7 @@
         <view class="weui-label">手机号</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" placeholder="请输入手机号"  type="number" bindinput="tel"/>
+        <input class="weui-input" placeholder="请输入手机号"  type="number" bindinput="tel" value="{{tel}}"/>
       </view>
     </view> 
   </view>

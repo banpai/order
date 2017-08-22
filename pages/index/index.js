@@ -8,8 +8,8 @@ Page({
   seeMap: function () {
     var that = this;
     wx.openLocation({
-      latitude: that.data.info.latitude,
-      longitude: that.data.info.longitude,
+      latitude: +that.data.info.latitude,
+      longitude: +that.data.info.longitude,
       scale: 28
     })
   },
@@ -23,12 +23,15 @@ Page({
   //初始化
   onLoad: function () {
     var that = this
-    console.log(app.globalData.dcmenu);
     //获取数据
     app.ajax(app.ceport.index, {}, function (res) {
       //渲染其他数据
       that.setData({
         info: res.data
+      })
+      wx.setStorage({
+        key: "name",
+        data: res.data.name
       })
       //渲染星星的个数
       var starlevel = [];

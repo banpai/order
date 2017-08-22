@@ -23,10 +23,30 @@ Page({
   data: {
     name: '',
     tel: '',
+    bz: '',
+    endtime: '08:30',
+    xzdzname: '请选择收货地址',
     radioItems: [
       { name: '先生', value: '0' },
       { name: '女士', value: '1', checked: true }
-    ]
+    ],
+    array: ['08:30', '09:00', '09:30', '10:00'],
+    index: 0,
+    time: '00:00'
+  },
+  //单列时间选择器
+  bindPickerChange: function(e) {
+    var that = this; 
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+        index: e.detail.value,
+        endtime: that.data[e.detail.value]
+    })
+  },
+  bindTimeChange: function(e) {
+      this.setData({
+          time: e.detail.value
+      })
   },
   //打电话
   tapCall: function () {
@@ -40,11 +60,43 @@ Page({
     var that = this
     console.log(app.globalData.dcmenu);
     //获取数据
-    app.ajax(app.ceport.dcxz, {}, function (res) {
-      that.setData({
-        dcxz: res.data
-      })
-    }, true);
+    wx.getStorage({
+      key: 'letdata',
+      success: function(res) {
+        console.log(res.data)
+        var infodata = JSON.parse(res.data);
+        that.setData({
+          dcxz: infodata
+        })
+      } 
+    });
+    //获取缓存数据
+    wx.getStorage({
+      key: 'mymsgwm',
+      success: function (res) {
+        console.log(res.data)
+        var infodata = JSON.parse(res.data);
+        console.log(infodata.name);
+        // var radioItems = that.data.radioItems;
+        // for (var i = 0, len = radioItems.length; i < len; ++i) {
+        //   radioItems[i].checked = radioItems[i].value == infodata.sex;
+        // }
+        var xzdzname = "请选择收货地址";
+        if(infodata.address && infodata.address != ''){
+          if(infodata.addrdetail && infodata.addrdetail != ''){
+            xzdzname = infodata.address + infodata.addrdetail;
+          }
+        }
+        that.setData({
+          name: infodata.name,
+          tel: infodata.tel,
+          sex: infodata.sex,
+          address: infodata.address,
+          addrdetail: infodata.addrdetail,
+          xzdzname: xzdzname
+        });
+      }
+    })
   },
   radioChange: function (e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value);
@@ -55,6 +107,13 @@ Page({
     this.setData({
       radioItems: radioItems
     });
+  },
+  //请选择收货地址
+  skipdz: function(){
+    var url = "dcxzinput"
+    wx.redirectTo({
+      url: 'dcxzinput'
+    })
   },
   //提交订单
   sub: function(e){
@@ -69,7 +128,9 @@ Page({
       tusi('请输入有效的手机号');
     }else{
       //差一个post提交数据
-      var id = '0';
+      var appid = app.getAppid();
+      var flag = '0';
+      var id = '1';
       var url = '../payment/payment?id=' + id;
       tusi('提交成功', true, function(){
         wx.redirectTo({
@@ -88,6 +149,12 @@ Page({
   tel: function(e){
     this.setData({
       tel: e.detail.value
+    })
+  },
+  //同步备注
+  bindTextAreaBlur: function(e){
+    this.setData({
+      bz: e.detail.value
     })
   }
 })

@@ -11,11 +11,11 @@ App({
       this.number = m.number;
       this.menu = [];
       var that = this;
-      m.menu.forEach(function(v, i) {
+      m.menu.forEach(function (v, i) {
         that.menu[i] = {};
         that.menu[i].typeName = v.typeName;
         that.menu[i].menuContent = [];
-        v.menuContent.forEach(function(m, n){
+        v.menuContent.forEach(function (m, n) {
           that.menu[i].menuContent[n] = {};
           that.menu[i].menuContent[n].name = m.name;
           that.menu[i].menuContent[n].src = m.src;
@@ -26,53 +26,76 @@ App({
         }, this);
       }, this);
     }
-    this.ajax(that.ceport.menu, {}, function (m) {      
+    this.ajax(that.ceport.menu, {}, function (m) {
       that.globalData.menu = new Cgarry(m.data);
       that.globalData.wmmenu = new Cgarry(m.data);
       that.globalData.pdmenu = new Cgarry(m.data);
     });
   },
-  getUserInfo: function (cb) {
-    var that = this
-    // if (this.globalData.userInfo) {
-    //   typeof cb == "function" && cb(this.globalData.userInfo)
-    // } else {
-
-    // }
-    //调用登录接口
-    wx.getUserInfo({
-      withCredentials: false,
-      success: function (res) {
-        that.globalData.userInfo = res.userInfo
-        typeof cb == "function" && cb(that.globalData.userInfo)
-      }
-    })
+  getAppid: function (bc) {
+    var that = this;
+    if (that.globalData.appid != "") {
+      bc(that.globalData.appid);
+    } else {
+      //调用微信登录接口
+      wx.login({
+        success: function (loginCode) {
+          var appid = 'wx0c3511d12effe1ae'; //填写微信小程序appid
+          var secret = 'bdbeba6230cb8efd543d81963444935d'; //填写微信小程序secret
+          var url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appid + '&secret=' + secret + '&js_code=' + loginCode.code + '&grant_type=authorization_code';
+          //调用request请求api转换登录凭证
+          wx.request({
+            url: url,
+            header: {
+              'content-type': 'application/json'
+            },
+            success: function (res) {
+              that.globalData.appid = res.data.openid;
+              bc(res.data.openid); //获取openid
+            }
+          })
+        }
+      })
+    }
   },
   //封装获取数据的方式
   ajax: function (url, data, fun, post) {
     var method = "GET";
-    if(post){
+    var header = {
+      'content-type': 'application/json'
+    };
+    if (post) {
       method = "POST";
+      header = {
+        "Content-Type": "application/x-www-form-urlencoded"
+      };
     }
+    console.log(method);
     //获取数据
     wx.request({
       url: url,
       method: method,
       data: data,
-      header: {
-        'content-type': 'application/json'
-      },
+      header: header,
       success: function (res) {
-        fun(res.data);
+        console.log(res.data);
+        var data = {
+          errcode: '0',
+          data: res.data.result
+        }
+        fun(data);
+        // fun(res.data);
       }
     });
   },
   //测试接口
   ceport: {
     //主页信息接口
-    index: "https://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/index",
+    //index: "https://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/index",
+    index: "http://shanggao.wshoto.com/app/index.php?i=3&c=entry&id=2&do=detail_api&m=weisrc_dish",
     //菜单信息
-    menu: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/menu",
+    //menu: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/menu",
+    menu: "http://shanggao.wshoto.com/app/index.php?i=3&c=entry&storeid=2&mode=4&do=menu_api&m=weisrc_dish",
     //状态接口
     wd: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/state",
     //获取我的订单数据
@@ -80,9 +103,12 @@ App({
     //支付页面
     payment: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/payment",
     //待支付页面
-    dcxz: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/dcxz"
+    dcxz: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/dcxz",
+    //post点菜数据接口
+    podc: "http://shanggao.wshoto.com/app/index.php?i=3&c=entry&storeid=2&mode=4&do=addtoorder_api&m=weisrc_dish"
   },
   globalData: {
+    appid: "",
     menu: {
       cost: 0,
       number: 0,

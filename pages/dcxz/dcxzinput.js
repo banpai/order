@@ -23,10 +23,11 @@ Page({
   data: {
     name: '',
     tel: '',
-    sex: "",
+    address: "",
+    addrdetail: "",
     radioItems: [
-      { name: '先生', value: '0' , checked: true},
-      { name: '女士', value: '1' }
+      { name: '先生', value: '0' },
+      { name: '女士', value: '1', checked: true }
     ]
   },
   //打电话
@@ -38,23 +39,12 @@ Page({
   },
   //初始化
   onLoad: function () {
-    var that = this;
+    var that = this
     console.log(app.globalData.dcmenu);
-    //获取数据
-    wx.getStorage({
-      key: 'letdata',
-      success: function(res) {
-        console.log(res.data)
-        var infodata = JSON.parse(res.data);
-        that.setData({
-          dcxz: infodata
-        })
-      } 
-    });
     //从本地缓存获取数据
     wx.getStorage({
-      key: 'mymsg',
-      success: function(res) {
+      key: 'mymsgwm',
+      success: function (res) {
         console.log(res.data)
         var infodata = JSON.parse(res.data);
         console.log(infodata.name);
@@ -66,9 +56,11 @@ Page({
           name: infodata.name,
           tel: infodata.tel,
           sex: infodata.sex,
-          radioItems: radioItems
+          radioItems: radioItems,
+          address: infodata.address,
+          addrdetail: infodata.addrdetail
         });
-      } 
+      }
     })
   },
   radioChange: function (e) {
@@ -82,6 +74,13 @@ Page({
       sex: e.detail.value
     });
   },
+  //请选择收货地址
+  skipdz: function () {
+    var url = "dcxzinput"
+    wx.redirectTo({
+      url: 'dcxzinput'
+    })
+  },
   //提交订单
   sub: function (e) {
     var that = this;
@@ -93,44 +92,33 @@ Page({
       tusi('请填写手机号');
     } else if (!myreg.test(that.data.tel)) {
       tusi('请输入有效的手机号');
+    } else if (this.data.address === '') {
+      tusi('请输入地址');
+    } else if (this.data.addrdetail === '') {
+      tusi('请输入详细地址');
     } else {
-      var mymsg = {
+      console.log(this.data.address == "");
+      console.log(this.data.address);
+      var mymsgwm = {
         name: that.data.name,
         tel: that.data.tel,
-        sex: that.data.sex
+        sex: that.data.sex,
+        address: that.data.address,
+        addrdetail: that.data.addrdetail
       };
-      var str = JSON.stringify(mymsg);
+      var str = JSON.stringify(mymsgwm);
       //存本地缓存
       wx.setStorage({
-        key: "mymsg",
+        key: "mymsgwm",
         data: str,
         complete: function () {
-          //整理post的提交数据
-          var postData = that.data.dcxz;
-          app.getAppid(function(appid){
-            postData.appid = appid;
-            postData.flag = "0";
-            postData.userinfo = {
-              name: that.data.name,
-              tel: that.data.tel,
-              sex: that.data.sex,
-              address: "",
-              addrdetail: "",
-              bz: "",
-              servicetime: ""
-            };
-            var postdatastr = JSON.stringify(postData);
-            app.ajax(app.ceport.podc, postdatastr, function(m){
-              //这边支付接口传回的参数需要重新处理
-              console.log(m);
-              var id = '0';
-              var url = '../payment/payment?id=' + id;
-              tusi('提交成功', true, function () {
-                wx.redirectTo({
-                  url: url
-                })
-              });
-            }, true);
+          //差一个post提交数据
+          var id = '0';
+          var url = '../dcxz/dcxzwm?id=' + id;
+          tusi('提交成功', true, function () {
+            wx.redirectTo({
+              url:url
+            });
           });
         }
       })
@@ -146,6 +134,18 @@ Page({
   tel: function (e) {
     this.setData({
       tel: e.detail.value
+    })
+  },
+  //同步姓名
+  address: function (e) {
+    this.setData({
+      address: e.detail.value
+    })
+  },
+  //电话
+  addrdetail: function (e) {
+    this.setData({
+      addrdetail: e.detail.value
     })
   }
 })

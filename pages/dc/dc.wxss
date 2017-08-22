@@ -125,7 +125,7 @@
 }
 .food-numb .add {
   font-size: 35rpx;
-  line-height: 37rpx;
+  line-height:42rpx;
   font-weight: 700;
   background: #FFD161;
   margin-left: 15rpx;
