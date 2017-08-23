@@ -142,7 +142,7 @@ Page({
           servicetime: that.data.time
         };
         var postdatastr = JSON.stringify(postData);
-        console.log(postdatastr);
+        // console.log(postdatastr);
         app.ajax(app.ceport.podc, postdatastr, function (m) {
           //这边支付接口传回的参数需要重新处理
           console.log(m);

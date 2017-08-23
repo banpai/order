@@ -23,6 +23,7 @@ App({
           that.menu[i].menuContent[n].rating = m.rating;
           that.menu[i].menuContent[n].price = m.price;
           that.menu[i].menuContent[n].numb = m.numb;
+          // that.menu[i].menuContent[n].id = m.numb;
         }, this);
       }, this);
     }
@@ -60,7 +61,7 @@ App({
   },
   //封装获取数据的方式
   ajax: function (url, data, fun, post) {
-    var method = "GET";
+    var method = "post";
     var header = {
       'content-type': 'application/json'
     };

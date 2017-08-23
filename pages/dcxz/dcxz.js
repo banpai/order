@@ -119,8 +119,8 @@ Page({
               bz: "",
               servicetime: ""
             };
-            var postdatastr = JSON.stringify(postData);
-            app.ajax(app.ceport.podc, postdatastr, function(m){
+            var jsonur = JSON.stringify(postData);
+            app.ajax(app.ceport.podc, jsonur, function(m){
               //这边支付接口传回的参数需要重新处理
               console.log(m);
               var id = '0';
