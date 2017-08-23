@@ -112,7 +112,7 @@ Page({
           var postData = that.data.dcxz;
           app.getAppid(function(appid){
             postData.appid = appid;
-            postData.flag = "0";
+            postData.flag = "1";
             postData.userinfo = {
               name: that.data.name,
               tel: that.data.tel,

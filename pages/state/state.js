@@ -61,22 +61,30 @@ Page({
   onLoad: function (options) {
     console.log(options.flag);
     console.log(options.id);
-
     var that = this;
-
     //修改状态颜色
     cgheader(options.flag, this);
     that.setData({
 
     });
     //获取数据
-    app.ajax(app.ceport.state, {}, function (res) {
-      that.setData({
-        state: res.data,
-        flag: options.flag,
+    app.getAppid(function(appid){
+      var databp = {
+        appid: appid,
         id: options.id
-      });
+      };
+      var postdata = JSON.stringify(databp);
+      console.log(postdata + "ddrferff");
+      app.ajax(app.ceport.state, postdata, function (res) {
+        console.log(JSON.stringify(res));
+        that.setData({
+          state: res.data,
+          flag: options.flag,
+          id: options.id
+        });
+      }, true);
     });
+    
     if (this.data.disabled) return;
     this.setData({
       progress: 0,

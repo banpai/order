@@ -98,7 +98,8 @@ App({
     //menu: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/menu",
     menu: "http://shanggao.wshoto.com/app/index.php?i=3&c=entry&storeid=2&mode=4&do=menu_api&m=weisrc_dish",
     //状态接口
-    wd: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/state",
+    // wd: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/state",
+    wd: "http://shanggao.wshoto.com/app/index.php?i=3&c=entry&do=order_api&m=weisrc_dish&storeid=2",
     //获取我的订单数据
     state: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/stateq",
     //支付页面

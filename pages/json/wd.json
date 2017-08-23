@@ -1,7 +1,6 @@
 {
-    "errcode": "0",
-    "errmsg": "",
-    "data": {
+    "status": "1",
+    "result": {
         //待确认
         "tbc": [
             {

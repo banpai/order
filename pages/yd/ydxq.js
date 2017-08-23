@@ -12,18 +12,7 @@ Page({
     var that = this
   },
   nextbp: function () {
-    wx.navigateTo({
-      url: 'ydxq',
-      success: function(res){
-        // success
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
-    })
+
   },
   open: function () {
     var that = this;

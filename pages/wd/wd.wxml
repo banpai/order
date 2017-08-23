@@ -12,14 +12,14 @@
             <view class="weui-tab__panel">
                 <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
                     <!--未确认内容 start-->
-                    <navigator  hover-class="weui-cell_active" class="weui-cells weui-cells_after-title" wx:for="{{ state.tbc }}"  wx:key="" url="../../pages/state/state?flag=0&id={{item.id}}">
+                    <navigator  hover-class="weui-cell_active" class="weui-cells weui-cells_after-title" wx:for="{{ state.list0 }}"  wx:key="" wx:if="{{item.status == '0'}}" url="../../pages/state/state?flag=0&id={{item.id}}">
                         <view class="weui-cell">
                             <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
-                                <image src="{{ item.icon }}" style="width: 40px; height: 40px; display: block" />
+                                <image src="{{ item.headimgurl }}" style="width: 40px; height: 40px; display: block" />
                             </view>
                             <view class="weui-cell__bd">
-                                <view>下单时间：{{ item.ctime }}</view>
-                                <view style="font-size: 13px;color: #888888;">总价：￥{{ item.cost }}</view>
+                                <view>下单时间：{{ item.givemeal_time }}</view>
+                                <view style="font-size: 13px;color: #888888;">总价：￥{{ item.totalprice }}</view>
                             </view>
                             <view class="weui-cell__ft weui-cell__ft_in-access">待确认</view>
                         </view>
@@ -28,14 +28,14 @@
                 </view>
                 <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
                     <!--已确认的内容 start-->
-                    <navigator hover-class="weui-cell_active" class="weui-cells weui-cells_after-title"  wx:for="{{ state.confirmed }}"  wx:key="" url="../../pages/state/state?flag=1&id={{item.id}}">
+                    <navigator  hover-class="weui-cell_active" class="weui-cells weui-cells_after-title" wx:for="{{ state.list1 }}"  wx:key="" wx:if="{{item.status == '1'}}" url="../../pages/state/state?flag=0&id={{item.id}}">
                         <view class="weui-cell">
                             <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
-                                <image src="{{item.icon}}" style="width: 40px; height: 40px; display: block" />
+                                <image src="{{ item.headimgurl }}" style="width: 40px; height: 40px; display: block" />
                             </view>
                             <view class="weui-cell__bd">
-                                <view>下单时间：{{ item.ctime }}</view>
-                                <view style="font-size: 13px;color: #888888;">总价：￥{{ item.cost }}</view>
+                                <view>下单时间：{{ item.givemeal_time }}</view>
+                                <view style="font-size: 13px;color: #888888;">总价：￥{{ item.totalprice }}</view>
                             </view>
                             <view class="weui-cell__ft weui-cell__ft_in-access">已确认</view>
                         </view>
@@ -44,14 +44,14 @@
                 </view>
                 <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
                     <!--完成的内容 start-->
-                    <navigator hover-class="weui-cell_active" class="weui-cells weui-cells_after-title"   wx:for="{{ state.completed }}"  wx:key="" url="../../pages/state/state?flag=2&id={{item.id}}">
+                    <navigator  hover-class="weui-cell_active" class="weui-cells weui-cells_after-title" wx:for="{{ state.list2 }}"  wx:key="" wx:if="{{item.status == '2'}}" url="../../pages/state/state?flag=0&id={{item.id}}">
                         <view class="weui-cell">
                             <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
-                                <image src="{{item.icon}}" style="width: 40px; height: 40px; display: block" />
+                                <image src="{{ item.headimgurl }}" style="width: 40px; height: 40px; display: block" />
                             </view>
                             <view class="weui-cell__bd">
-                                <view>下单时间：{{ item.ctime }}</view>
-                                <view style="font-size: 13px;color: #888888;">总价：￥{{ item.cost }}</view>
+                                <view>下单时间：{{ item.givemeal_time }}</view>
+                                <view style="font-size: 13px;color: #888888;">总价：￥{{ item.totalprice }}</view>
                             </view>
                             <view class="weui-cell__ft weui-cell__ft_in-access">完成</view>
                         </view>

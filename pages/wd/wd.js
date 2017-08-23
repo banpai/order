@@ -10,22 +10,29 @@ Page({
     onLoad: function () {
         var that = this;
         //获取数据
-        app.ajax(app.ceport.wd, {}, function (res) {
-            console.log(res);
-            var tabs = that.tabs;
-            var activeIndex = that.activeIndex;
-            var sliderOffset = that.sliderOffset;
-            var sliderLeft = that.sliderLeft;
-            that.setData({
-                tabs: tabs,
-                activeIndex: activeIndex,
-                sliderOffset: sliderOffset,
-                sliderLeft: sliderLeft,
-                state: res.data
-            });
-        });
+        app.getAppid(function (appid) {
+            var databp = {
+                appid: appid
+            };
+            var postdata = JSON.stringify(databp);
+            console.log(postdata + "ddrferff");
+            app.ajax(app.ceport.wd, postdata, function (res) {
+                console.log(res);
+                var tabs = that.tabs;
+                var activeIndex = that.activeIndex;
+                var sliderOffset = that.sliderOffset;
+                var sliderLeft = that.sliderLeft;
+                that.setData({
+                    tabs: tabs,
+                    activeIndex: activeIndex,
+                    sliderOffset: sliderOffset,
+                    sliderLeft: sliderLeft,
+                    state: res.data
+                });
+            }, true);
+        })
         wx.getSystemInfo({
-            success: function(res) {
+            success: function (res) {
                 that.setData({
                     sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
                     sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
