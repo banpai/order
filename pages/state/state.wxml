@@ -5,13 +5,13 @@
             <view class="yq_text">等待处理</view>
         </view>
         <view class="weui-progress__bar bz">
-            <progress percent="{{progress}}" color="#fff" stroke-width="3" />
+            <progress percent="{{progress}}" color="#F3A8A4" stroke-width="3" />
         </view>
         <view class="yq" style="{{yq2}}">
             <view class="yq_text">已确认</view>
         </view>
         <view class="weui-progress__bar bz">
-            <progress percent="{{progress2}}" color="#fff" stroke-width="3" />
+            <progress percent="{{progress2}}" color="#F3A8A4" stroke-width="3" />
         </view>
         <view class="yq" style="{{yq3}}">
             <view class="yq_text">已完成</view>
