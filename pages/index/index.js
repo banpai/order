@@ -22,6 +22,9 @@ Page({
   },
   //初始化
   onLoad: function () {
+    app.getAppid(function(appid){
+      console.log(appid);
+    });
     var that = this
     //获取数据
     app.ajax(app.ceport.index, {}, function (res) {

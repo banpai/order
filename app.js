@@ -23,7 +23,7 @@ App({
           that.menu[i].menuContent[n].rating = m.rating;
           that.menu[i].menuContent[n].price = m.price;
           that.menu[i].menuContent[n].numb = m.numb;
-          // that.menu[i].menuContent[n].id = m.numb;
+          that.menu[i].menuContent[n].id = m.id;
         }, this);
       }, this);
     }
@@ -102,7 +102,8 @@ App({
     //获取我的订单数据
     state: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/stateq",
     //支付页面
-    payment: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/payment",
+    //payment: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/payment",
+    payment:"http://shanggao.wshoto.com/app/index.php?i=3&c=entry&id=2&do=orderdetail_api&m=weisrc_dish",
     //待支付页面
     dcxz: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/dcxz",
     //post点菜数据接口

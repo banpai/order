@@ -9,7 +9,8 @@ Page({
     selected: 0,
     howMuch: 12,
     //总价格
-    cost: 0
+    cost: 0,
+    number: 0
   },
   //增加吃的
   addToTrolley: function (e) {
@@ -21,6 +22,8 @@ Page({
     var flag = this.data.flag;
     var cost = Number(this.data.cost) + Number(this.data.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].price);
     console.log(cost);
+
+    console.log('number=' + number);
     if (flag === "0") {
       app.globalData.menu.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].numb++;
       app.globalData.menu.cost = cost;

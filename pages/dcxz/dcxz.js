@@ -122,14 +122,14 @@ Page({
             var jsonur = JSON.stringify(postData);
             app.ajax(app.ceport.podc, jsonur, function(m){
               //这边支付接口传回的参数需要重新处理
-              console.log(m);
-              var id = '0';
+              var id = m.data.orderid;
               var url = '../payment/payment?id=' + id;
+              console.log(url);
               tusi('提交成功', true, function () {
                 wx.redirectTo({
                   url: url
                 })
-              });
+              }, true);
             }, true);
           });
         }

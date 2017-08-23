@@ -5,18 +5,35 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
-    //获取数据
-    app.ajax(app.ceport.payment, {}, function (res) {
-      console.log(res);
-      that.setData({
-        xs: res.data,
-        flag: options.flag,
-        id: options.id
-      })
+    app.getAppid(function (appid) {
+      var postdata = {
+        appid: appid,
+        orderid: options.id
+      };
+      var postdatastr = JSON.stringify(postdata);
+      console.log(postdatastr);
+      //获取数据
+      app.ajax(app.ceport.payment, postdatastr, function (res) {
+        console.log(res);
+        that.setData({
+          xs: res.data,
+          flag: options.flag,
+          id: options.id
+        })
+      });
+      //获取商户名称
+      wx.getStorage({
+        key: 'name',
+        success: function(res) {
+          that.setData({
+            name: res.data
+          });
+        }
+      });
     });
   },
   //支付按钮
-  pay: function(){
+  pay: function () {
     var that = this;
     var successurl = 'msg_success?flag=1&id=' + this.data.id;
     var failurl = 'msg_fail?flag=0&id=' + this.data.id;
@@ -26,16 +43,16 @@ Page({
       'package': that.data.xs.package,
       'signType': 'MD5',
       'paySign': that.data.xs.paySign,
-      'success':function(res){
+      'success': function (res) {
         wx.redirectTo({
           url: successurl
         })
       },
-      'fail':function(res){
+      'fail': function (res) {
         wx.redirectTo({
           url: failurl
         })
       }
-   })
+    })
   }
-})
+});

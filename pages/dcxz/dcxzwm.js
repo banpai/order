@@ -131,7 +131,7 @@ Page({
       var postData = that.data.dcxz;
       app.getAppid(function (appid) {
         postData.appid = appid;
-        postData.flag = "0";
+        postData.flag = "2";
         postData.userinfo = {
           name: that.data.name,
           tel: that.data.tel,
@@ -144,15 +144,16 @@ Page({
         var postdatastr = JSON.stringify(postData);
         // console.log(postdatastr);
         app.ajax(app.ceport.podc, postdatastr, function (m) {
+          
           //这边支付接口传回的参数需要重新处理
-          console.log(m);
-          var id = '0';
+          var id = m.data.orderid;
           var url = '../payment/payment?id=' + id;
+          console.log(url);
           tusi('提交成功', true, function () {
             wx.redirectTo({
               url: url
             })
-          });
+          }, true);
         }, true);
       });
     }
