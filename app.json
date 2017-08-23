@@ -13,7 +13,9 @@
     "pages/payment/msg_fail",
     "pages/dcxz/dcxz",
     "pages/dcxz/dcxzwm",
-    "pages/dcxz/dcxzinput"
+    "pages/dcxz/dcxzinput",
+    "pages/pd/pdinput",
+    "pages/pd/pdstate"
   ],
   "window":{
     "backgroundTextStyle":"light",
