@@ -24,6 +24,7 @@ Page({
     name: '',
     tel: '',
     sex: "",
+    zh: "",
     radioItems: [
       { name: '先生', value: '0' , checked: true},
       { name: '女士', value: '1' }
@@ -66,6 +67,7 @@ Page({
           name: infodata.name,
           tel: infodata.tel,
           sex: infodata.sex,
+          zh: infodata.zh,
           radioItems: radioItems
         });
       } 
@@ -97,7 +99,8 @@ Page({
       var mymsg = {
         name: that.data.name,
         tel: that.data.tel,
-        sex: that.data.sex
+        sex: that.data.sex,
+        zh: that.data.zh
       };
       var str = JSON.stringify(mymsg);
       //存本地缓存
@@ -114,6 +117,7 @@ Page({
               name: that.data.name,
               tel: that.data.tel,
               sex: that.data.sex,
+              zh: that.data.sex,
               address: "",
               addrdetail: "",
               bz: "",
@@ -146,6 +150,12 @@ Page({
   tel: function (e) {
     this.setData({
       tel: e.detail.value
+    })
+  },
+  //同步桌号
+  zh: function (e) {
+    this.setData({
+      zh: e.detail.value
     })
   }
 })

@@ -24,6 +24,7 @@ Page({
     name: '',
     tel: '',
     bz: '',
+    zh:"",
     endtime: '08:30',
     xzdzname: '请选择收货地址',
     radioItems: [
@@ -139,6 +140,7 @@ Page({
           address: that.data.address,
           addrdetail:  that.data.addrdetail,
           bz: that.data.bz,
+          zh: that.data.zh,
           servicetime: that.data.time
         };
         var postdatastr = JSON.stringify(postData);
