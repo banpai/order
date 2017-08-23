@@ -3,9 +3,9 @@
     <view class="weui-cell__bd">
       <view style="display: inline-block; vertical-align: middle">下单类型</view>
     </view>
-    <view class="weui-cell__ft" wx:if="{xs.dining_mode == '0'}">点餐</view>
-    <view class="weui-cell__ft" wx:if="{xs.dining_mode == '1'}">外卖</view>
-    <view class="weui-cell__ft" wx:if="{xs.dining_mode == '2'}">排队点餐</view>
+    <view class="weui-cell__ft" wx:if="{{xs.dining_mode == '0'}}">点餐</view>
+    <!-- <view class="weui-cell__ft" wx:if="{xs.dining_mode == '1'}"></view> -->
+    <view class="weui-cell__ft" wx:if="{{xs.dining_mode == '2'}}">外卖</view>
   </view>
   <view class="weui-cell weui-cell_access">
     <view class="weui-cell__bd">
