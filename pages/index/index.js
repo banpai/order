@@ -35,6 +35,10 @@ Page({
       wx.setStorage({
         key: "name",
         data: res.data.name
+      });
+      wx.setStorage({
+        key: "tel",
+        data: res.data.tel
       })
       //渲染星星的个数
       var starlevel = [];

@@ -43,13 +43,13 @@
         <view class="weui-cell__hd">
             <image src="../../images/1.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
         </view>
-        <view class="weui-cell__bd">{{ state.info.name }}</view>
+        <view class="weui-cell__bd">{{ name }}</view>
     </navigator>
     <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
             <image src="../../images/3.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
         </view>
-        <view class="weui-cell__bd">{{ state.info.tel }}</view>
+        <view class="weui-cell__bd">{{ tel }}</view>
     </navigator>
 </view>
 <!--商家信息 start-->
@@ -64,8 +64,8 @@
     </view>
     <view class="weui-form-preview__bd">
         <view class="weui-form-preview__item" wx:for="{{state.menu}}" wx:key=""> 
-            <view class="weui-form-preview__label">{{ item.name }}</view>
-            <view class="sl">x{{ item.numb }}</view>
+            <view class="weui-form-preview__label">{{ item.title }}</view>
+            <view class="sl">x{{ item.total }}</view>
             <view class="weui-form-preview__value">￥{{ item.price }}</view>
         </view>
     </view>
@@ -82,7 +82,7 @@
     <view class="weui-form-preview__bd">
         <view class="weui-form-preview__item">
             <view class="weui-form-preview__label">订单号</view>
-            <view class="weui-form-preview__value">{{ state.order.ordnumber }}</view>
+            <view class="weui-form-preview__value">{{ state.order.ordersn }}</view>
         </view>
         <view class="weui-form-preview__item">
             <view class="weui-form-preview__label">订单状态</view>
@@ -91,11 +91,11 @@
         </view>
         <view class="weui-form-preview__item">
             <view class="weui-form-preview__label">下单时间</view>
-            <view class="weui-form-preview__value">{{ state.order.ctime }}</view>
+            <view class="weui-form-preview__value">{{ state.order.dateline }}</view>
         </view>
         <view class="weui-form-preview__item">
             <view class="weui-form-preview__label">姓名</view>
-            <view class="weui-form-preview__value">{{ state.order.name }}</view>
+            <view class="weui-form-preview__value">{{ state.order.username }}</view>
         </view>
         <view class="weui-form-preview__item">
             <view class="weui-form-preview__label">电话</view>

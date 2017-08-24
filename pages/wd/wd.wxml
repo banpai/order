@@ -18,7 +18,7 @@
                                 <image src="{{ item.headimgurl }}" style="width: 40px; height: 40px; display: block" />
                             </view>
                             <view class="weui-cell__bd">
-                                <view>下单时间：{{ item.givemeal_time }}</view>
+                                <view>下单时间：{{ item.dateline }}</view>
                                 <view style="font-size: 13px;color: #888888;">总价：￥{{ item.totalprice }}</view>
                             </view>
                             <view class="weui-cell__ft weui-cell__ft_in-access">待确认</view>
@@ -34,7 +34,7 @@
                                 <image src="{{ item.headimgurl }}" style="width: 40px; height: 40px; display: block" />
                             </view>
                             <view class="weui-cell__bd">
-                                <view>下单时间：{{ item.givemeal_time }}</view>
+                                <view>下单时间：{{ item.dateline }}</view>
                                 <view style="font-size: 13px;color: #888888;">总价：￥{{ item.totalprice }}</view>
                             </view>
                             <view class="weui-cell__ft weui-cell__ft_in-access">已确认</view>
@@ -50,7 +50,7 @@
                                 <image src="{{ item.headimgurl }}" style="width: 40px; height: 40px; display: block" />
                             </view>
                             <view class="weui-cell__bd">
-                                <view>下单时间：{{ item.givemeal_time }}</view>
+                                <view>下单时间：{{ item.dateline }}</view>
                                 <view style="font-size: 13px;color: #888888;">总价：￥{{ item.totalprice }}</view>
                             </view>
                             <view class="weui-cell__ft weui-cell__ft_in-access">完成</view>

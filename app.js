@@ -92,8 +92,12 @@ App({
           fun(data);
         }else{
           wx.hideLoading();
+          var message = "获取数据失败";
+          if(res.data.message){
+            message = res.data.message;
+          }
           wx.showToast({
-            title: res.data.message,
+            title: message,
             icon: 'loading',
             duration: 2000
           })
@@ -122,7 +126,7 @@ App({
     wd: "http://shanggao.wshoto.com/app/index.php?i=3&c=entry&do=order_api&m=weisrc_dish&storeid=2",
     //获取我的订单数据
     state:"http://shanggao.wshoto.com/app/index.php?i=3&c=entry&do=orderdetail_api&m=weisrc_dish&storeid=2",
-    // state: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/stateq",
+     //state: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/stateq",
     //支付页面
     //payment: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/payment",
     payment:"http://shanggao.wshoto.com/app/index.php?i=3&c=entry&id=2&do=orderdetail_api&m=weisrc_dish",

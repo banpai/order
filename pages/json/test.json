@@ -1,34 +1,24 @@
 {
-    "cost": 160,
-    "number": 6,
-    "name": "369快餐",
-    "order": [
-        {
-            "name": "小炖肉",
-            "src": "http://shanggao.wshoto.com/attachment/images/3/2017/08/yaAdnbT9nGmNUA9Tzy6NrM0sYDs5g5.jpg",
-            "sales": "4",
-            "rating": "15",
-            "price": "25",
-            "numb": 5
+    "status": 1,
+    "result": {
+        "cost": "50.00",
+        "menu": {
+            "title": null,
+            "thumb": null,
+            "sales": null,
+            "marketprice": null,
+            "price": "25.00",
+            "total": "2"
         },
-        {
-            "name": "豉油辣炒小观蚬蛤",
-            "src": "http://shanggao.wshoto.com/attachment/images/3/2017/08/zJHRS71aLjhs5LBTSbeIbarAeh7sQ7.jpg",
-            "sales": "4",
-            "rating": "12",
-            "price": "35",
-            "numb": 1
+        "order": {
+            "id": "151",
+            "ordersn": "20170823689829008969",
+            "username": "\u89e3\u98de",
+            "totalprice": "50.00",
+            "tel": "13151297760",
+            "givemeal_time": "09:03",
+            "goodsid": "0"
         }
-    ],
-    "appid": "ohcjx0EVjDnj7LWxjX_M1Z2ozQ88",
-    "flag": "0",
-    "userinfo": {
-        "name": "省道但是",
-        "tel": "13151297760",
-        "sex": "1",
-        "address": "",
-        "addrdetail": "",
-        "bz": "",
-        "servicetime": ""
-    }
+    },
+    "message": "success"
 }

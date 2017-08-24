@@ -84,6 +84,24 @@ Page({
         });
       }, true);
     });
+
+    //获取数据
+    wx.getStorage({
+      key: 'name',
+      success: function(res) {
+        that.setData({
+          name: res.data
+        })
+      } 
+    });
+    wx.getStorage({
+      key: 'tel',
+      success: function(res) {
+        that.setData({
+          tel: res.data
+        })
+      } 
+    });
     
     if (this.data.disabled) return;
     this.setData({
