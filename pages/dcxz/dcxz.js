@@ -23,7 +23,7 @@ Page({
   data: {
     name: '',
     tel: '',
-    sex: "",
+    sex: "0",
     zh: "",
     radioItems: [
       { name: '先生', value: '0' , checked: true},

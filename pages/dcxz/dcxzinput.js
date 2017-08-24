@@ -25,6 +25,7 @@ Page({
     tel: '',
     address: "",
     addrdetail: "",
+    sex: "1",
     radioItems: [
       { name: '先生', value: '0' },
       { name: '女士', value: '1', checked: true }

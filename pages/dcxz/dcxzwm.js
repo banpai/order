@@ -24,6 +24,7 @@ Page({
     name: '',
     tel: '',
     bz: '',
+    sex: "1",
     zh:"",
     endtime: '08:30',
     xzdzname: '请选择收货地址',
@@ -106,7 +107,8 @@ Page({
       radioItems[i].checked = radioItems[i].value == e.detail.value;
     }
     this.setData({
-      radioItems: radioItems
+      radioItems: radioItems,
+      sex: e.detail.value
     });
   },
   //请选择收货地址
