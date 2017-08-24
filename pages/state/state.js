@@ -124,6 +124,7 @@ Page({
   },
   //取消订单
   cancle: function () {
+    var that = this;
     wx.showModal({
       title: '提示',
       content: '确认取消！',
@@ -134,8 +135,19 @@ Page({
         if (res.confirm) {
           console.log('确定')
           //缺一个提交后台数据库的操作
-          // 关闭当前页面返回上级页面
-          wx.navigateBack();
+          //获取数据
+          app.getAppid(function(appid){
+            var databp = {
+              appid: appid,
+              id: that.data.id
+            };
+            var postdata = JSON.stringify(databp);
+            app.ajax(app.ceport.cancelorder_api, postdata, function (res) {
+               // 关闭当前页面返回上级页面
+                wx.navigateBack();
+            }, true);
+          });
+         
         } else {
           console.log('取消')
         }

@@ -133,7 +133,9 @@ App({
     //待支付页面
     dcxz: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/dcxz",
     //post点菜数据接口
-    podc: "http://shanggao.wshoto.com/app/index.php?i=3&c=entry&storeid=2&mode=4&do=addtoorder_api&m=weisrc_dish"
+    podc: "http://shanggao.wshoto.com/app/index.php?i=3&c=entry&storeid=2&mode=4&do=addtoorder_api&m=weisrc_dish",
+    //取消订单接口
+    cancelorder_api: "http://shanggao.wshoto.com/app/index.php?i=3&c=entry&storeid=2&mode=4&do=cancelorder_api&m=weisrc_dish"
   },
   globalData: {
     appid: "",
