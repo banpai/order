@@ -61,6 +61,9 @@ App({
   },
   //封装获取数据的方式
   ajax: function (url, data, fun, post) {
+    wx.showLoading({
+      title: '加载中',
+    });
     var method = "post";
     var header = {
       'content-type': 'application/json'
@@ -80,12 +83,29 @@ App({
       header: header,
       success: function (res) {
         console.log(res.data);
-        var data = {
-          errcode: '0',
-          data: res.data.result
+        if(res.data.status == 1){
+          wx.hideLoading();
+          var data = {
+            errcode: '0',
+            data: res.data.result
+          }
+          fun(data);
+        }else{
+          wx.hideLoading();
+          wx.showToast({
+            title: res.data.message,
+            icon: 'loading',
+            duration: 2000
+          })
         }
-        fun(data);
-        // fun(res.data);
+      },
+      fail: function(){
+        wx.hideLoading();
+        wx.showToast({
+          title: '接口调用失败',
+          icon: 'loading',
+          duration: 2000
+        })
       }
     });
   },
