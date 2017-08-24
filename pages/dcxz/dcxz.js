@@ -121,7 +121,8 @@ Page({
               address: "",
               addrdetail: "",
               bz: "",
-              servicetime: ""
+              servicetime: "",
+              appid: appid
             };
             var jsonur = JSON.stringify(postData);
             app.ajax(app.ceport.podc, jsonur, function(m){

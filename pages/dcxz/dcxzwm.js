@@ -141,7 +141,8 @@ Page({
           addrdetail:  that.data.addrdetail,
           bz: that.data.bz,
           zh: that.data.zh,
-          servicetime: that.data.time
+          servicetime: that.data.time,
+          appid: appid
         };
         var postdatastr = JSON.stringify(postData);
         // console.log(postdatastr);
