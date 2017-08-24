@@ -6,7 +6,7 @@ function _next(n, fun) {
     this.setData({
       disabled: false
     });
-    if(fun){
+    if (fun) {
       fun();
     }
     return true;
@@ -68,7 +68,7 @@ Page({
 
     });
     //获取数据
-    app.getAppid(function(appid){
+    app.getAppid(function (appid) {
       var databp = {
         appid: appid,
         id: options.id
@@ -88,21 +88,21 @@ Page({
     //获取数据
     wx.getStorage({
       key: 'name',
-      success: function(res) {
+      success: function (res) {
         that.setData({
           name: res.data
         })
-      } 
+      }
     });
     wx.getStorage({
       key: 'tel',
-      success: function(res) {
+      success: function (res) {
         that.setData({
           tel: res.data
         })
-      } 
+      }
     });
-    
+
     if (this.data.disabled) return;
     this.setData({
       progress: 0,
@@ -110,14 +110,14 @@ Page({
     });
     console.log(options.flag);
     //修改动画状态
-    if(options.flag == '0'){
+    if (options.flag == '0') {
       _next.call(this, 50);
-    }else if(options.flag == '1'){
-      _next.call(this, 100, function(){
+    } else if (options.flag == '1') {
+      _next.call(this, 100, function () {
         _next2.call(that, 50);
       });
-    }else if(options.flag == '2'){
-      _next.call(this, 100, function(){
+    } else if (options.flag == '2') {
+      _next.call(this, 100, function () {
         _next2.call(that, 100);
       });
     }
@@ -136,18 +136,18 @@ Page({
           console.log('确定')
           //缺一个提交后台数据库的操作
           //获取数据
-          app.getAppid(function(appid){
+          app.getAppid(function (appid) {
             var databp = {
               appid: appid,
               id: that.data.id
             };
             var postdata = JSON.stringify(databp);
             app.ajax(app.ceport.cancelorder_api, postdata, function (res) {
-               // 关闭当前页面返回上级页面
-                wx.navigateBack();
+              // 关闭当前页面返回上级页面
+              wx.navigateBack();
             }, true);
           });
-         
+
         } else {
           console.log('取消')
         }
@@ -155,13 +155,13 @@ Page({
     });
   },
   //确认订单
-  sure: function(){
+  sure: function () {
     var url = '../payment/payment?flag=' + this.data.flag + '&id=' + this.data.id;
     wx.showToast({
       title: '提交成功',
       icon: 'success',
       duration: 2000,
-      complete: function(){
+      complete: function () {
         wx.redirectTo({
           url: url
         });

@@ -5,19 +5,25 @@ Page({
         tabs: ["待确认", "已确认", "完成"],
         activeIndex: 0,
         sliderOffset: 0,
-        sliderLeft: 0
+        sliderLeft: 0,
+        list0: [],
+        list1: [],
+        list2: [],
+        status: 0
     },
     onLoad: function () {
         var that = this;
         //获取数据
         app.getAppid(function (appid) {
             var databp = {
-                appid: appid
+                appid: appid,
+                status: '0',
+                id: -1
             };
             var postdata = JSON.stringify(databp);
-            console.log(postdata + "ddrferff");
             app.ajax(app.ceport.wd, postdata, function (res) {
-                console.log(res);
+
+                console.log(JSON.stringify(res));
                 var tabs = that.tabs;
                 var activeIndex = that.activeIndex;
                 var sliderOffset = that.sliderOffset;
@@ -27,12 +33,16 @@ Page({
                     activeIndex: activeIndex,
                     sliderOffset: sliderOffset,
                     sliderLeft: sliderLeft,
-                    state: res.data
+                    state: res.data,
+                    list0: res.data
                 });
             }, true);
         })
+        this.getdata('1', -1);
+        this.getdata('2', -1);
         wx.getSystemInfo({
             success: function (res) {
+                
                 that.setData({
                     sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
                     sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
@@ -43,7 +53,39 @@ Page({
     tabClick: function (e) {
         this.setData({
             sliderOffset: e.currentTarget.offsetLeft,
-            activeIndex: e.currentTarget.id
+            activeIndex: e.currentTarget.id,
+            status: e.currentTarget.id
         });
+    },
+    getdata: function(status, id){
+        var that = this;
+         //获取数据
+         app.getAppid(function (appid) {
+            var databp = {
+                appid: appid,
+                status: status,
+                id: id
+            };
+            var postdata = JSON.stringify(databp);
+            if(status == 0){
+                app.ajax(app.ceport.wd, postdata, function (res) {
+                    that.setData({
+                        list0: res.data
+                    });
+                }, true);
+            }else if(status == 1){
+                app.ajax(app.ceport.wd, postdata, function (res) {
+                    that.setData({
+                        list1: res.data
+                    });
+                }, true);
+            }else if(status == 2){
+                app.ajax(app.ceport.wd, postdata, function (res) {
+                    that.setData({
+                        list2: res.data
+                    });
+                }, true);
+            }
+        })
     }
 });
