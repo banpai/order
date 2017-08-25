@@ -63,7 +63,7 @@ Page({
     yq1: "background: #F1544E;"
   },
   onLoad: function (options) {
-    console.log(options.flag);
+    console.log(options.flag  === '0');
     console.log(options.id);
     var that = this;
     //修改状态颜色
@@ -78,7 +78,6 @@ Page({
         id: options.id
       };
       var postdata = JSON.stringify(databp);
-      console.log(postdata + "ddrferff");
       app.ajax(stateurl, postdata, function (res) {
         console.log(JSON.stringify(res));
         that.setData({
