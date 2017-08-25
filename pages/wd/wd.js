@@ -1,5 +1,7 @@
 var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 var app = getApp()
+//获取订单列表接口
+const wdurl = require('../../config').wd
 Page({
     data: {
         tabs: ["待确认", "已确认", "完成"],
@@ -23,7 +25,7 @@ Page({
                 id: -1
             };
             var postdata = JSON.stringify(databp);
-            app.ajax(app.ceport.wd, postdata, function (res) {
+            app.ajax(wdurl, postdata, function (res) {
 
                 console.log(JSON.stringify(res));
                 var tabs = that.tabs;
@@ -71,19 +73,19 @@ Page({
             };
             var postdata = JSON.stringify(databp);
             if(status == 0){
-                app.ajax(app.ceport.wd, postdata, function (res) {
+                app.ajax(wdurl, postdata, function (res) {
                     that.setData({
                         list0: res.data
                     });
                 }, true);
             }else if(status == 1){
-                app.ajax(app.ceport.wd, postdata, function (res) {
+                app.ajax(wdurl, postdata, function (res) {
                     that.setData({
                         list1: res.data
                     });
                 }, true);
             }else if(status == 2){
-                app.ajax(app.ceport.wd, postdata, function (res) {
+                app.ajax(wdurl, postdata, function (res) {
                     that.setData({
                         list2: res.data
                     });

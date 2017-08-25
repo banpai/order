@@ -1,4 +1,7 @@
 var app = getApp()
+//获取支付页面信息的接口
+const paymenturl = require('../../config').payment
+
 Page({
   data: {
     logs: []
@@ -13,7 +16,7 @@ Page({
       var postdatastr = JSON.stringify(postdata);
       console.log(postdatastr);
       //获取数据
-      app.ajax(app.ceport.payment, postdatastr, function (res) {
+      app.ajax(paymenturl, postdatastr, function (res) {
         console.log(res);
         that.setData({
           xs: res.data,

@@ -1,4 +1,8 @@
 var app = getApp()
+//获取订单详情的接口
+const stateurl = require('../../config').state
+//订单取消的接口
+const cancelorder_apiurl =  require('../../config').cancelorder_api
 
 function _next(n, fun) {
   var that = this;
@@ -75,7 +79,7 @@ Page({
       };
       var postdata = JSON.stringify(databp);
       console.log(postdata + "ddrferff");
-      app.ajax(app.ceport.state, postdata, function (res) {
+      app.ajax(stateurl, postdata, function (res) {
         console.log(JSON.stringify(res));
         that.setData({
           state: res.data,
@@ -128,7 +132,7 @@ Page({
               id: that.data.id
             };
             var postdata = JSON.stringify(databp);
-            app.ajax(app.ceport.cancelorder_api, postdata, function (res) {
+            app.ajax(cancelorder_apiurl, postdata, function (res) {
               // 关闭当前页面返回上级页面
               wx.navigateBack();
             }, true);

@@ -1,5 +1,10 @@
 //获取应用实例
 var app = getApp()
+//获取主页数据接口
+const indexUrl = require('../../config').index
+//获取点餐数据接口
+const menuurl = require('../../config').menu
+
 Page({
   data: {
     "cesh": [1, 1, 1]
@@ -37,8 +42,9 @@ Page({
       longitude: longitude
     }
     var postdatastr = JSON.stringify(postdata);
+    console.log(indexUrl);
     //获取数据
-    app.ajax(app.ceport.index, postdatastr, function (res) {
+    app.ajax(indexUrl, postdatastr, function (res) {
       //渲染其他数据
       that.setData({
         info: res.data
@@ -80,7 +86,7 @@ Page({
           }, this);
         }, this);
       }
-      app.ajax(app.ceport.menu, postdatastr, function (m) {
+      app.ajax(menuurl, postdatastr, function (m) {
         app.globalData.menu = new Cgarry(m.data);
         app.globalData.wmmenu = new Cgarry(m.data);
         app.globalData.pdmenu = new Cgarry(m.data);

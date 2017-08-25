@@ -1,5 +1,7 @@
 //获取应用实例
 var app = getApp()
+//获取提交订单详情数据接口地址
+const podcurl = require('../../config').podc
 
 //封装tusi
 function tusi(str, flag, fun) {
@@ -125,7 +127,7 @@ Page({
               appid: appid
             };
             var jsonur = JSON.stringify(postData);
-            app.ajax(app.ceport.podc, jsonur, function(m){
+            app.ajax(podcurl, jsonur, function(m){
               //这边支付接口传回的参数需要重新处理
               var id = m.data.orderid;
               var url = '../payment/payment?id=' + id;
