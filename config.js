@@ -5,7 +5,7 @@
 // 此处主机域名是腾讯云解决方案分配的域名
 // 小程序后台服务解决方案：https://www.qcloud.com/solution/la
 
-var host = "14592619.qcloud.la"
+var host = "http://"
 
 var config = {
     // 下面的地址配合云端 Server 工作
@@ -28,25 +28,25 @@ var config = {
     downloadExampleUrl: `https://${host}/static/weapp.jpg`,
     //主页信息接口
     //index: "https://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/index",
-    index: "http://shanggao.wshoto.com/app/index.php?i=3&c=entry&id=2&do=detail_api&m=weisrc_dish",
+    index: `${host}shanggao.wshoto.com/app/index.php?i=3&c=entry&id=2&do=detail_api&m=weisrc_dish`,
     //菜单信息
     //menu: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/menu",
-    menu: "http://shanggao.wshoto.com/app/index.php?i=3&c=entry&storeid=2&mode=4&do=menu_api&m=weisrc_dish",
+    menu: `${host}shanggao.wshoto.com/app/index.php?i=3&c=entry&storeid=2&mode=4&do=menu_api&m=weisrc_dish`,
     //状态接口
     // wd: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/state",
-    wd: "http://shanggao.wshoto.com/app/index.php?i=3&c=entry&do=order_api&m=weisrc_dish&storeid=2",
+    wd: `${host}shanggao.wshoto.com/app/index.php?i=3&c=entry&do=order_api&m=weisrc_dish&storeid=2`,
     //获取我的订单数据
-    state:"http://shanggao.wshoto.com/app/index.php?i=3&c=entry&do=orderdetail_api&m=weisrc_dish&storeid=2",
+    state:`${host}shanggao.wshoto.com/app/index.php?i=3&c=entry&do=orderdetail_api&m=weisrc_dish&storeid=2`,
      //state: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/stateq",
     //支付页面
     //payment: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/payment",
-    payment:"http://shanggao.wshoto.com/app/index.php?i=3&c=entry&id=2&do=orderdetail_api&m=weisrc_dish",
+    payment:`${host}shanggao.wshoto.com/app/index.php?i=3&c=entry&id=2&do=orderdetail_api&m=weisrc_dish`,
     //待支付页面
     dcxz: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/dcxz",
     //post点菜数据接口
-    podc: "http://shanggao.wshoto.com/app/index.php?i=3&c=entry&storeid=2&mode=4&do=addtoorder_api&m=weisrc_dish",
+    podc: `${host}shanggao.wshoto.com/app/index.php?i=3&c=entry&storeid=2&mode=4&do=addtoorder_api&m=weisrc_dish`,
     //取消订单接口
-    cancelorder_api: "http://shanggao.wshoto.com/app/index.php?i=3&c=entry&storeid=2&mode=4&do=cancelorder_api&m=weisrc_dish"
+    cancelorder_api: `${host}shanggao.wshoto.com/app/index.php?i=3&c=entry&storeid=2&mode=4&do=cancelorder_api&m=weisrc_dish`
 };
 
 module.exports = config
