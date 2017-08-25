@@ -117,42 +117,36 @@ Page({
   },
   buy: function () {
     var that = this;
-    wx.getStorage({
-      key: 'name',
-      success: function(res) {
-        console.log(res.data);
-        var tjdata = {
-          cost: that.data.cost,
-          number: that.data.number,
-          name: res.data,
-          order: []
+    var tjdata = {
+      cost: that.data.cost,
+      number: that.data.number,
+      name: app.globalData.showdata.name,
+      order: []
+    }
+    that.data.menu.forEach(function (v) {
+      v.menuContent.forEach(function (m) {
+        if (m.numb > 0) {
+          tjdata.order.push(m);
         }
-        that.data.menu.forEach(function (v) {
-          v.menuContent.forEach(function (m) {
-            if (m.numb > 0) {
-              tjdata.order.push(m);
-            }
-          }, this);
-        }, this);
-        var letdata = JSON.stringify(tjdata);
-        //存本地缓存
-        wx.setStorage({
-          key: "letdata",
-          data: letdata,
-          complete: function () {
-            //选好了，点击购买
-            var url = '../dcxz/dcxz';
-            if (that.options.flag == '1') {
-              url = '../dcxz/dcxzwm';
-            }
-            if (that.data.cost != 0) {
-              wx.redirectTo({
-                url: url
-              });
-            }
-          }
-        })
+      }, this);
+    }, this);
+    var letdata = JSON.stringify(tjdata);
+    //存本地缓存
+    wx.setStorage({
+      key: "letdata",
+      data: letdata,
+      complete: function () {
+        //选好了，点击购买
+        var url = '../dcxz/dcxz';
+        if (that.options.flag == '1') {
+          url = '../dcxz/dcxzwm';
+        }
+        if (that.data.cost != 0) {
+          wx.redirectTo({
+            url: url
+          });
+        }
       }
-    });
+    })
   }
 })

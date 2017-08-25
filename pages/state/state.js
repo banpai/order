@@ -84,25 +84,11 @@ Page({
         });
       }, true);
     });
-
     //获取数据
-    wx.getStorage({
-      key: 'name',
-      success: function (res) {
-        that.setData({
-          name: res.data
-        })
-      }
+    that.setData({
+      name: app.globalData.showdata.name,
+      tel: app.globalData.showdata.tel
     });
-    wx.getStorage({
-      key: 'tel',
-      success: function (res) {
-        that.setData({
-          tel: res.data
-        })
-      }
-    });
-
     if (this.data.disabled) return;
     this.setData({
       progress: 0,

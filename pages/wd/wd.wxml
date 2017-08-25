@@ -15,7 +15,7 @@
                     <navigator  hover-class="weui-cell_active" class="weui-cells weui-cells_after-title" wx:for="{{ list0 }}"  wx:key="" wx:if="{{item.status == '0'}}" url="../../pages/state/state?flag=0&id={{item.id}}">
                         <view class="weui-cell">
                             <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
-                                <image src="{{ item.headimgurl }}" style="width: 40px; height: 40px; display: block" />
+                                <image src="{{ icon }}" style="width: 40px; height: 40px; display: block" />
                             </view>
                             <view class="weui-cell__bd">
                                 <view>下单时间：{{ item.dateline }}</view>
@@ -31,7 +31,7 @@
                     <navigator  hover-class="weui-cell_active" class="weui-cells weui-cells_after-title" wx:for="{{ list1 }}"  wx:key="" wx:if="{{item.status == '1'}}" url="../../pages/state/state?flag=0&id={{item.id}}">
                         <view class="weui-cell">
                             <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
-                                <image src="{{ item.headimgurl }}" style="width: 40px; height: 40px; display: block" />
+                                <image src="{{ icon }}" style="width: 40px; height: 40px; display: block" />
                             </view>
                             <view class="weui-cell__bd">
                                 <view>下单时间：{{ item.dateline }}</view>
@@ -47,7 +47,7 @@
                     <navigator  hover-class="weui-cell_active" class="weui-cells weui-cells_after-title" wx:for="{{ list2 }}"  wx:key="" wx:if="{{item.status == '2'}}" url="../../pages/state/state?flag=0&id={{item.id}}">
                         <view class="weui-cell">
                             <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
-                                <image src="{{ item.headimgurl }}" style="width: 40px; height: 40px; display: block" />
+                                <image src="{{ icon }}" style="width: 40px; height: 40px; display: block" />
                             </view>
                             <view class="weui-cell__bd">
                                 <view>下单时间：{{ item.dateline }}</view>

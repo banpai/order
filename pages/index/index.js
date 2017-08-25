@@ -40,6 +40,7 @@ Page({
         key: "tel",
         data: res.data.tel
       })
+      app.globalData.showdata = res.data;
       //渲染星星的个数
       var starlevel = [];
       if (res.data.level > 0) {

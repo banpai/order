@@ -22,13 +22,8 @@ Page({
         })
       });
       //获取商户名称
-      wx.getStorage({
-        key: 'name',
-        success: function(res) {
-          that.setData({
-            name: res.data
-          });
-        }
+      that.setData({
+        name: app.globalData.showdata.name
       });
     });
   },

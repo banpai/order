@@ -9,9 +9,11 @@ Page({
         list0: [],
         list1: [],
         list2: [],
-        status: 0
+        status: 0,
+        icon: ''
     },
     onLoad: function () {
+        console.log(app.globalData.showdata);
         var that = this;
         //获取数据
         app.getAppid(function (appid) {
@@ -34,7 +36,8 @@ Page({
                     sliderOffset: sliderOffset,
                     sliderLeft: sliderLeft,
                     state: res.data,
-                    list0: res.data
+                    list0: res.data,
+                    icon: app.globalData.showdata.icon
                 });
             }, true);
         })
