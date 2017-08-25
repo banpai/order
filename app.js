@@ -5,33 +5,7 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    var that = this;
-    function Cgarry(m) {
-      this.cost = m.cost;
-      this.number = m.number;
-      this.menu = [];
-      var that = this;
-      m.menu.forEach(function (v, i) {
-        that.menu[i] = {};
-        that.menu[i].typeName = v.typeName;
-        that.menu[i].menuContent = [];
-        v.menuContent.forEach(function (m, n) {
-          that.menu[i].menuContent[n] = {};
-          that.menu[i].menuContent[n].name = m.name;
-          that.menu[i].menuContent[n].src = m.src;
-          that.menu[i].menuContent[n].sales = m.sales;
-          that.menu[i].menuContent[n].rating = m.rating;
-          that.menu[i].menuContent[n].price = m.price;
-          that.menu[i].menuContent[n].numb = m.numb;
-          that.menu[i].menuContent[n].id = m.id;
-        }, this);
-      }, this);
-    }
-    this.ajax(that.ceport.menu, {}, function (m) {
-      that.globalData.menu = new Cgarry(m.data);
-      that.globalData.wmmenu = new Cgarry(m.data);
-      that.globalData.pdmenu = new Cgarry(m.data);
-    });
+   
   },
   getAppid: function (bc) {
     var that = this;

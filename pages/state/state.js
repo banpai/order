@@ -153,5 +153,21 @@ Page({
         });
       }
     });
+  },
+  //查看地图
+  seeMap: function () {
+    var that = this;
+    wx.openLocation({
+      latitude: +that.data.info.latitude,
+      longitude: +that.data.info.longitude,
+      scale: 28
+    })
+  },
+  //打电话
+  tapCall: function () {
+    var that = this;
+    wx.makePhoneCall({
+      phoneNumber: that.data.info.tel
+    })
   }
 });
