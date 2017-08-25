@@ -133,7 +133,9 @@ Page({
             var postdata = JSON.stringify(databp);
             app.ajax(cancelorder_apiurl, postdata, function (res) {
               // 关闭当前页面返回上级页面
-              wx.navigateBack();
+              wx.redirectTo({
+                url: '../wd/wd'
+              })
             }, true);
           });
 
