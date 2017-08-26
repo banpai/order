@@ -29,7 +29,7 @@
       </scroll-view>
       <view class="footer {{cost!=0?'active':''}}">
         <view class="howMuch">
-          <view class="img" style="background:{{cost!=0?'#FFD161':'#E7E7E7'}};">
+          <view class="img" style="background:{{cost!=0?'#F1544E':'#E7E7E7'}};">
               <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">{{number?number:0}}</view>
             <image src="../../images/trolley.png" style="width:60rpx;height:60rpx;"></image>
           </view>

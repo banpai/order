@@ -3,15 +3,15 @@
     <view class="weui-cell__bd">
       <view style="display: inline-block; vertical-align: middle">下单类型</view>
     </view>
-    <view class="weui-cell__ft" wx:if="{{xs.dining_mode == '0'}}">点餐</view>
+    <view class="weui-cell__ft" wx:if="{{xs.order.dining_mode == '1'}}">点餐</view>
     <!-- <view class="weui-cell__ft" wx:if="{xs.dining_mode == '1'}"></view> -->
-    <view class="weui-cell__ft" wx:if="{{xs.dining_mode == '2'}}">外卖</view>
+    <view class="weui-cell__ft" wx:if="{{xs.order.dining_mode == '2'}}">外卖</view>
   </view>
   <view class="weui-cell weui-cell_access">
     <view class="weui-cell__bd">
       <view style="display: inline-block; vertical-align: middle">订单编号</view>
     </view>
-    <view class="weui-cell__ft">{{xs.ordersn}}</view>
+    <view class="weui-cell__ft">{{xs.order.ordersn}}</view>
   </view>
   <view class="weui-cell weui-cell_access">
     <view class="weui-cell__bd">
@@ -23,7 +23,7 @@
     <view class="weui-cell__bd">
       <view style="display: inline-block; vertical-align: middle">您需支付</view>
     </view>
-    <view class="weui-cell__ft" style="color: #F1544E;">￥{{xs.totalprice}}</view>
+    <view class="weui-cell__ft" style="color: #F1544E;">￥{{xs.cost}}</view>
   </view>
   <button class="weui-btn" type="primary" bindtap="pay">微信支付</button>
 </view>

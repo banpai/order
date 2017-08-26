@@ -15,20 +15,8 @@ App({
       //调用微信登录接口
       wx.login({
         success: function (loginCode) {
-          var appid = 'wx0c3511d12effe1ae'; //填写微信小程序appid
-          var secret = 'bdbeba6230cb8efd543d81963444935d'; //填写微信小程序secret
-          var url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appid + '&secret=' + secret + '&js_code=' + loginCode.code + '&grant_type=authorization_code';
-          //调用request请求api转换登录凭证
-          wx.request({
-            url: url,
-            header: {
-              'content-type': 'application/json'
-            },
-            success: function (res) {
-              that.globalData.appid = res.data.openid;
-              bc(res.data.openid); //获取openid
-            }
-          })
+          that.globalData.appid = loginCode.code;
+          bc(loginCode.code);
         }
       })
     }

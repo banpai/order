@@ -125,10 +125,11 @@
 }
 .food-numb .add {
   font-size: 35rpx;
-  line-height:42rpx;
+  line-height: 18px;
   font-weight: 700;
-  background: #FFD161;
+  background: #F1544E;
   margin-left: 15rpx;
+  color: #fff;
 }
 .food-numb .remove {
   margin-right: 15rpx;
@@ -191,8 +192,7 @@
   line-height: 40rpx;
 }
 .footer.active .pay {
-  background: #FFD161;
-  color: black;
+  background: #F1544E;
 }
 .commentPage-header {
   height: 190rpx;
