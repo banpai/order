@@ -16,7 +16,6 @@ Page({
         wx.redirectTo({
           url: 'index'
         })
-        console.log(JSON.stringify(res));
       },
       fail: function(){
         wx.redirectTo({

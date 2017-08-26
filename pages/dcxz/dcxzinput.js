@@ -41,14 +41,11 @@ Page({
   //初始化
   onLoad: function () {
     var that = this
-    console.log(app.globalData.dcmenu);
     //从本地缓存获取数据
     wx.getStorage({
       key: 'mymsgwm',
       success: function (res) {
-        console.log(res.data)
         var infodata = JSON.parse(res.data);
-        console.log(infodata.name);
         var radioItems = that.data.radioItems;
         for (var i = 0, len = radioItems.length; i < len; ++i) {
           radioItems[i].checked = radioItems[i].value == infodata.sex;
@@ -65,7 +62,6 @@ Page({
     })
   },
   radioChange: function (e) {
-    console.log('radio发生change事件，携带value值为：', e.detail.value);
     var radioItems = this.data.radioItems;
     for (var i = 0, len = radioItems.length; i < len; ++i) {
       radioItems[i].checked = radioItems[i].value == e.detail.value;
@@ -85,7 +81,6 @@ Page({
   //提交订单
   sub: function (e) {
     var that = this;
-    console.log(this.data.name);
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
     if (this.data.name === '') {
       tusi('请填写姓名');
@@ -98,8 +93,6 @@ Page({
     } else if (this.data.addrdetail === '') {
       tusi('请输入详细地址');
     } else {
-      console.log(this.data.address == "");
-      console.log(this.data.address);
       var mymsgwm = {
         name: that.data.name,
         tel: that.data.tel,

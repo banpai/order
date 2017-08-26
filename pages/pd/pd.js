@@ -6,7 +6,6 @@ Page({
     userInfo: {}
   },
   onLoad: function () {
-    console.log('onLoad')
     var that = this
   }
 });

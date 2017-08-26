@@ -20,9 +20,7 @@ Page({
     var number = this.data.number;
     var flag = this.data.flag;
     var cost = Number(this.data.cost) + Number(this.data.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].price);
-    console.log(cost);
 
-    console.log('number=' + number);
     if (flag === "0") {
       app.globalData.menu.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].numb++;
       app.globalData.menu.cost = cost;
@@ -80,12 +78,10 @@ Page({
     this.setData({
       selected: e.currentTarget.dataset.index
     })
-    console.log(e.currentTarget.dataset.index);
   },
   //监听页面加载
   onLoad: function (options) {
     var that = this;
-    console.log(options.flag === "0");
     //重新获取高度
     wx.getSystemInfo({
       success: function (res) {
@@ -99,13 +95,10 @@ Page({
     //渲染菜单数据
     if (options.flag === "0") {
       menu = app.globalData.menu;
-      console.log("001");
     } else if (options.flag === "1") {
       menu = app.globalData.wmmenu;
-      console.log("002");
     } else if (options.flag === "2") {
       menu = app.globalData.pdmenu;
-      console.log("003");
     }
     that.setData({
       menu: menu.menu,
@@ -113,7 +106,6 @@ Page({
       number: menu.number,
       flag: options.flag
     })
-    console.log(options.flag);
   },
   buy: function () {
     var that = this;

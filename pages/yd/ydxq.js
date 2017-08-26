@@ -8,7 +8,6 @@ Page({
     time: "2017-08-26"
   },
   onLoad: function () {
-    console.log('onLoad')
     var that = this
   },
   nextbp: function () {
@@ -27,9 +26,7 @@ Page({
     wx.showActionSheet({
       itemList: tarray,
       success: function (res) {
-        console.log(JSON.stringify(res));
         if (!res.cancel) {
-          console.log(res.tapIndex)
           that.setData({
             time: tarray[res.tapIndex]
           });

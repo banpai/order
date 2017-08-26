@@ -64,8 +64,12 @@
   </view>
   <!--navbar end-->
 
+  <!--加一个图片 start-->
+  <image class="ic" src="../../images/baner.jpg" style="height:370rpx;width: 100%;" />
+  <!--加一个图片 end-->
+
   <!--文本栏 start-->
-  <view class="weui-cells weui-cells_after-title" class="ebl">
+  <view class="weui-cells weui-cells_after-title" class="ebl" style="margin-top: 9px;">
       <view class="weui-cell">
           <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
               <image src="../../images/1.png" class="ic"/>

@@ -41,7 +41,6 @@ Page({
   //单列时间选择器
   bindPickerChange: function (e) {
     var that = this;
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value,
       endtime: that.data[e.detail.value]
@@ -62,12 +61,10 @@ Page({
   //初始化
   onLoad: function () {
     var that = this
-    console.log(app.globalData.dcmenu);
     //获取数据
     wx.getStorage({
       key: 'letdata',
       success: function (res) {
-        console.log(res.data)
         var infodata = JSON.parse(res.data);
         that.setData({
           dcxz: infodata
@@ -78,9 +75,7 @@ Page({
     wx.getStorage({
       key: 'mymsgwm',
       success: function (res) {
-        console.log(res.data)
         var infodata = JSON.parse(res.data);
-        console.log(infodata.name);
         // var radioItems = that.data.radioItems;
         // for (var i = 0, len = radioItems.length; i < len; ++i) {
         //   radioItems[i].checked = radioItems[i].value == infodata.sex;
@@ -103,7 +98,6 @@ Page({
     })
   },
   radioChange: function (e) {
-    console.log('radio发生change事件，携带value值为：', e.detail.value);
     var radioItems = this.data.radioItems;
     for (var i = 0, len = radioItems.length; i < len; ++i) {
       radioItems[i].checked = radioItems[i].value == e.detail.value;
@@ -123,7 +117,6 @@ Page({
   //提交订单
   sub: function (e) {
     var that = this;
-    console.log(this.data.name);
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
     if (this.data.name === '') {
       tusi('请填写姓名');
@@ -149,13 +142,11 @@ Page({
           appid: appid
         };
         var postdatastr = JSON.stringify(postData);
-        // console.log(postdatastr);
         app.ajax(podcurl, postdatastr, function (m) {
           
           //这边支付接口传回的参数需要重新处理
           var id = m.data.orderid;
           var url = '../payment/payment?id=' + id;
-          console.log(url);
           tusi('提交成功', true, function () {
             wx.redirectTo({
               url: url
@@ -179,7 +170,6 @@ Page({
   },
   //同步备注
   bindTextAreaBlur: function (e) {
-    console.log(e.detail.value);
     this.setData({
       bz: e.detail.value
     })

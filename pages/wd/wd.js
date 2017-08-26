@@ -15,7 +15,6 @@ Page({
         icon: ''
     },
     onLoad: function () {
-        console.log(app.globalData.showdata);
         var that = this;
         //获取数据
         app.getAppid(function (appid) {
@@ -26,8 +25,6 @@ Page({
             };
             var postdata = JSON.stringify(databp);
             app.ajax(wdurl, postdata, function (res) {
-
-                console.log(JSON.stringify(res));
                 var tabs = that.tabs;
                 var activeIndex = that.activeIndex;
                 var sliderOffset = that.sliderOffset;

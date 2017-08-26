@@ -63,8 +63,6 @@ Page({
     yq1: "background: #F1544E;"
   },
   onLoad: function (options) {
-    console.log(options.flag  === '0');
-    console.log(options.id);
     var that = this;
     //修改状态颜色
     cgheader(options.flag, this);
@@ -79,7 +77,6 @@ Page({
       };
       var postdata = JSON.stringify(databp);
       app.ajax(stateurl, postdata, function (res) {
-        console.log(JSON.stringify(res));
         that.setData({
           state: res.data,
           flag: options.flag,
@@ -97,7 +94,6 @@ Page({
       progress: 0,
       disabled: true
     });
-    console.log(options.flag);
     //修改动画状态
     if (options.flag == '0') {
       _next.call(this, 50);
@@ -120,9 +116,7 @@ Page({
       confirmText: "确定",
       cancelText: "取消",
       success: function (res) {
-        console.log(res);
         if (res.confirm) {
-          console.log('确定')
           //缺一个提交后台数据库的操作
           //获取数据
           app.getAppid(function (appid) {
@@ -140,7 +134,7 @@ Page({
           });
 
         } else {
-          console.log('取消')
+          
         }
       }
     });

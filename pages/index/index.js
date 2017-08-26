@@ -27,9 +27,6 @@ Page({
   },
   //初始化
   onLoad: function () {
-    app.getAppid(function(appid){
-      console.log(appid);
-    });
     var that = this;
     var latitude = false;
     var longitude = false;
@@ -42,7 +39,6 @@ Page({
       longitude: longitude
     }
     var postdatastr = JSON.stringify(postdata);
-    console.log(indexUrl);
     //获取数据
     app.ajax(indexUrl, postdatastr, function (res) {
       //渲染其他数据

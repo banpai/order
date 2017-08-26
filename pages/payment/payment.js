@@ -14,10 +14,8 @@ Page({
         orderid: options.id
       };
       var postdatastr = JSON.stringify(postdata);
-      console.log(postdatastr);
       //获取数据
       app.ajax(paymenturl, postdatastr, function (res) {
-        console.log(res);
         that.setData({
           xs: res.data,
           flag: options.flag,
