@@ -75,7 +75,7 @@ Page({
     app.getAppid(function (appid) {
       var databp = {
         appid: appid,
-        id: options.id
+        orderid: options.id
       };
       var postdata = JSON.stringify(databp);
       app.ajax(stateurl, postdata, function (res) {
