@@ -25,5 +25,12 @@
     "navigationBarTitleText": "点餐",
     "navigationBarBackgroundColor": "#F1544E",
     "backgroundColor": "#F1544E"
-  }
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false
 }

@@ -36,7 +36,6 @@ App({
         "Content-Type": "application/x-www-form-urlencoded"
       };
     }
-    console.log(method);
     //获取数据
     wx.request({
       url: url,
@@ -44,7 +43,6 @@ App({
       data: data,
       header: header,
       success: function (res) {
-        console.log(res.data);
         if(res.data.status == 1){
           wx.hideLoading();
           var data = {

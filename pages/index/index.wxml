@@ -31,32 +31,32 @@
   <view class="weui-flex navbar">
     <navigator url="../../pages/dc/dc?flag=0" class="weui-flex__item nb_li" hover-class="weui-cell_active">
       <view class="placeholder nb_lid">
-        <view class="nb_icon">
-          <image class="ic" src="../../images/001.jpg" />
+        <view class="nb_icon" style="background: #FFAD12;border-radius: 50%;">
+          <image class="ic" src="../../images/dc2.png" />
         </view>
         <view class="nb_text">点餐</view>
       </view>
     </navigator>
     <navigator url="../../pages/yd/yd" class="weui-flex__item nb_li" hover-class="weui-cell_active">
       <view class="placeholder nb_lid">
-        <view class="nb_icon">
-          <image class="ic" src="../../images/002.png" />
+        <view class="nb_icon" style="background: #3DC09F;border-radius: 50%;">
+          <image class="ic" src="../../images/yd2.png" />
         </view>
         <view class="nb_text">预定</view>
       </view>
     </navigator>
     <navigator url="../../pages/pd/pd" class="weui-flex__item nb_li" hover-class="weui-cell_active">
       <view class="placeholder nb_lid">
-        <view class="nb_icon">
-          <image class="ic" src="../../images/003.jpg" />
+        <view class="nb_icon" style="background: #2DB6EF;border-radius: 50%;">
+          <image class="ic" src="../../images/pd2.png" />
         </view>
         <view class="nb_text">排队</view>
       </view>
     </navigator>
     <navigator url="../../pages/dc/dc?flag=1" class="weui-flex__item nb_li" hover-class="weui-cell_active">
       <view class="placeholder nb_lid">
-        <view class="nb_icon">
-          <image class="ic" src="../../images/004.jpg" />
+        <view class="nb_icon" style="background: #FF5A5A;border-radius: 50%;">
+          <image class="ic" src="../../images/wm3.png" />
         </view>
         <view class="nb_text">外卖</view>
       </view>
@@ -65,7 +65,7 @@
   <!--navbar end-->
 
   <!--加一个图片 start-->
-  <image class="ic" src="../../images/baner.jpg" style="height:370rpx;width: 100%;" />
+  <image class="ic" src="{{info.index_img}}" style="width: 100%;" />
   <!--加一个图片 end-->
 
   <!--文本栏 start-->
@@ -116,6 +116,8 @@
   </view>
   <!--文本栏 end-->
 
+  <view class="footerb"></view>
+  
   <!--我的按钮 start-->
   <navigator url="../../pages/wd/wd" class="my_bt">
       <image class="ic" src="../../images/user.png" />
