@@ -1,3 +1,4 @@
+<import src="../../template/tecSupport/tecSupport.wxml"/>
 <view class="container">
   <!--订单详情 start-->
   <view class="dcxq">
@@ -59,8 +60,10 @@
       </view>
   </view>
   <!--表单支付 end-->
-
-  <view style="height: 100px;"></view>
+  <template is="footer" data="{{...tecSupport}}"/>
+  <view style="height: 100px;">
+    
+  </view>
 
   <!--提交订单 start-->
   <view class="suborder">

@@ -1,3 +1,4 @@
+<import src="../../template/tecSupport/tecSupport.wxml"/>
 <view class="container">
   <view class="weui-cell weui-cell_access">
     <view class="weui-cell__bd">
@@ -26,4 +27,5 @@
     <view class="weui-cell__ft" style="color: #F1544E;">￥{{xs.cost}}</view>
   </view>
   <button class="weui-btn" type="primary" bindtap="pay">微信支付</button>
+  <template is="footer" data="{{...tecSupport}}"/>
 </view>

@@ -1,3 +1,6 @@
+//添加尾部技术支持信息的方法
+const getFooter = require('../../template/tecSupport/tecSupport.js').getFooter;
+
 //获取应用实例
 var app = getApp()
 Page({
@@ -81,6 +84,8 @@ Page({
   },
   //监听页面加载
   onLoad: function (options) {
+    //添加尾部技术支持的信息
+    getFooter.call(this);
     var that = this;
     //重新获取高度
     wx.getSystemInfo({

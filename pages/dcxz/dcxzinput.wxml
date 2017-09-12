@@ -1,3 +1,4 @@
+<import src="../../template/tecSupport/tecSupport.wxml"/>
 <view class="container">
   <!--表单支付 start-->
   <view class="weui-cells weui-cells_after-title">
@@ -47,4 +48,5 @@
 
   <button class="weui-btn" type="primary" bindtap="sub">确定</button>
   <!--表单支付 end-->
+  <template is="footer" data="{{...tecSupport}}"/>
 </view>

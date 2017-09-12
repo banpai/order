@@ -1,3 +1,4 @@
+<import src="../../template/tecSupport/tecSupport.wxml"/>
 <view class="container">
   <!--地址时间选择 start-->
   <view class="weui-panel">
@@ -62,6 +63,8 @@
     </view>
   </view>
   <!--请输入备注 end-->
+
+  <template is="footer" data="{{...tecSupport}}"/>
 
   <!--提交订单 start-->
   <view class="suborder">

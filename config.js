@@ -6,6 +6,7 @@
 // 小程序后台服务解决方案：https://www.qcloud.com/solution/la
 
 var host = "https://diancan.wshoto.com";
+
 //友回忆炸串炒饭的接口参数
 // var storeid = '&i=3&storeid=6&weid=3';
 // var ids = '&i=3&id=6&weid=3';

@@ -1,3 +1,6 @@
+//添加尾部技术支持信息的方法
+const getFooter = require('../../template/tecSupport/tecSupport.js').getFooter;
+
 var app = getApp()
 //获取订单详情的接口
 const stateurl = require('../../config').state
@@ -63,6 +66,8 @@ Page({
     yq1: "background: #F1544E;"
   },
   onLoad: function (options) {
+    //添加尾部技术支持的信息
+    getFooter.call(this);
     var that = this;
     //修改状态颜色
     cgheader(options.flag, this);

@@ -1,3 +1,6 @@
+//添加尾部技术支持信息的方法
+const getFooter = require('../../template/tecSupport/tecSupport.js').getFooter;
+
 var app = getApp()
 //获取支付页面信息的接口
 const paymenturl = require('../../config').payment
@@ -7,6 +10,8 @@ Page({
     logs: []
   },
   onLoad: function (options) {
+    //添加尾部技术支持的信息
+    getFooter.call(this);
     var that = this;
     app.getAppid(function (appid) {
       var postdata = {

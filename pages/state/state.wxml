@@ -1,3 +1,4 @@
+<import src="../../template/tecSupport/tecSupport.wxml"/>
 <!--进度状态 start-->
 <view class="zjd">
     <view class="weui-progress jdt">
@@ -104,3 +105,4 @@
     </view>
 </view>
 <!--订单详情 end-->
+<template is="footer" data="{{...tecSupport}}"/>
