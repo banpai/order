@@ -1,3 +1,4 @@
+<import src="../../template/tecSupport/tecSupport.wxml"/>
 <view class="container" disable-scroll="true">
   <view style="{{height}}" class="swiper" current="{{currentPage}}" bindchange="turnTitle">
     <swiper-item id="orderPage">
@@ -26,6 +27,7 @@
             </view>
           </view>
         </block>
+        <template is="footer" data="{{...tecSupport}}"/>
       </scroll-view>
       <view class="footer {{cost!=0?'active':''}}">
         <view class="howMuch">
