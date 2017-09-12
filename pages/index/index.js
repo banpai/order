@@ -4,6 +4,8 @@ var app = getApp()
 const indexUrl = require('../../config').index
 //获取点餐数据接口
 const menuurl = require('../../config').menu
+//添加尾部技术支持信息的方法
+const getFooter = require('../../template/tecSupport/tecSupport.js').getFooter;
 
 Page({
   data: {
@@ -27,6 +29,8 @@ Page({
   },
   //初始化
   onLoad: function () {
+    //添加尾部技术支持的信息
+    getFooter.call(this);
     var that = this;
     var latitude = false;
     var longitude = false;

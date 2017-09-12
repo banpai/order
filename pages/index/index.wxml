@@ -1,3 +1,4 @@
+<import src="../../template/tecSupport/tecSupport.wxml"/>
 <view class="container">
   <!--头部名称 start-->
   <view class="weui-panel weui-panel_access header">
@@ -116,8 +117,10 @@
   </view>
   <!--文本栏 end-->
 
-  <view class="footerb"></view>
-  
+  <view class="footerb">
+    <template is="footer" data="{{...tecSupport}}"/>
+  </view>
+
   <!--我的按钮 start-->
   <navigator url="../../pages/wd/wd" class="my_bt">
       <image class="ic" src="../../images/user.png" />

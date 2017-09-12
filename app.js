@@ -5,7 +5,7 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-   
+
   },
   getAppid: function (bc) {
     var that = this;
@@ -21,12 +21,60 @@ App({
       })
     }
   },
+  authorize : function(type, cb){
+      let that = this;
+      // $scopeLists = ['scope.userInfo', 'scope.address', 'scope.userLocation'];
+
+      wx.getSetting({
+          success: (res) => {
+              if(res.authSetting[type] === false){
+                  wx.authorize({
+                      scope: type,
+                      success() {
+                          that.callback({statusCode : 1, data: true}, cb)
+                      },
+                      fail(){
+                          that.callback({statusCode : 0, data: false}, cb)
+                      }
+                  });
+              }else{
+                  that.callback({statusCode : 1, data: true}, cb)
+              }
+          }
+      })
+
+  },
+  callback : function(res, cb){
+      if (typeof cb === "object" || typeof cb === "function") {
+          if (typeof cb === "function") {
+              cb(res);
+              return true;
+          }
+
+          if (res.statusCode === 1) {
+              if (typeof cb.success === "function") {
+                  cb.success(res);
+              }
+          } else {
+              if (typeof cb.fail === "function") {
+                  cb.fail(res);
+              }
+          }
+
+          if (typeof cb.complete === 'function') {
+              cb.complete(res);
+          }
+      }
+
+      return res;
+  },
   //封装获取数据的方式
   ajax: function (url, data, fun, post) {
+    console.log(url);
     wx.showLoading({
       title: '加载中',
     });
-    var method = "post";
+    var method = "POST";
     var header = {
       'content-type': 'application/json'
     };
@@ -41,8 +89,11 @@ App({
       url: url,
       method: method,
       data: data,
-      header: header,
+      dataType:'json',
+      // header: header,
       success: function (res) {
+        console.log(url);
+        console.log(JSON.stringify(res));
         if(res.data.status == 1){
           wx.hideLoading();
           var data = {
@@ -63,7 +114,9 @@ App({
           })
         }
       },
-      fail: function(){
+      fail: function(res){
+        console.log('fail data======' + JSON.stringify(data));
+        console.log('fail res======' + JSON.stringify(res));
         wx.hideLoading();
         wx.showToast({
           title: '接口调用失败',
