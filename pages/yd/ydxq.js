@@ -1,4 +1,6 @@
 //index.js
+//获取点餐数据接口
+const getFooter = require('../../template/tecSupport/tecSupport.js').getFooter;
 //获取应用实例
 var app = getApp()
 Page({
@@ -8,10 +10,12 @@ Page({
     time: "2017-08-26"
   },
   onLoad: function () {
+    //添加尾部技术支持的信息
+    getFooter.call(this);
     var that = this
   },
   nextbp: function () {
-
+    
   },
   open: function () {
     var that = this;

@@ -1,3 +1,4 @@
+<import src="../../template/tecSupport/tecSupport.wxml"/>
 <view class="container">
     <!--预订时间 start-->
     <view class="weui-cells__title">小桌 ￥20起订</view>
@@ -10,4 +11,5 @@
         </view>
     </view>
     <!--预订时间 end-->
+    <template is="footer" data="{{...tecSupport}}"/>
 </view>

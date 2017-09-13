@@ -19,26 +19,26 @@ Page({
         console.log(res);
       }
       // if (res.statusCode === 1) {
-        esTools.fn.getSession(function (rex) {
-          console.log(rex.statusCode === 1);
-          // console.log('rex r');
-          // console.log(rex);
-          wx.hideLoading();
-          if (rex.statusCode === 1) {
-            wx.redirectTo({
-              url: '../index/index'
-            });
-          } else {
-            wx.redirectTo({
-              url: '../login/login'
-            });
-          }
-        });
+      esTools.fn.getSession(function (rex) {
+        console.log(rex.statusCode === 1);
+        // console.log('rex r');
+        // console.log(rex);
+        wx.hideLoading();
+        if (rex.statusCode === 1) {
+          wx.redirectTo({
+            url: '../index/index'
+          });
+        } else {
+          wx.redirectTo({
+            url: '../login/login'
+          });
+        }
+      });
       // }
     })
   },
   onLoad(options) {
-      this.loginState();
+    this.loginState();
   },
   onShow() {
     // 获取显示屏宽高

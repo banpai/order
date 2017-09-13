@@ -1,3 +1,4 @@
+<import src="../../template/tecSupport/tecSupport.wxml"/>
 <view class="container">
     <!--预订时间 start-->
     <view class="weui-cells__title">请选择您预订的时间</view>
@@ -14,4 +15,5 @@
     <!--下一步按钮 start-->
     <button class="weui-btn" type="primary" bindtap="nextbp">下一步</button>
     <!--下一步按钮 end-->
+    <template is="footer" data="{{...tecSupport}}"/>
 </view>

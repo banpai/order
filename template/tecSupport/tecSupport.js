@@ -23,7 +23,6 @@ function getFooter(){
             website: website
         }
     });
-    
 };
 
 module.exports = {
