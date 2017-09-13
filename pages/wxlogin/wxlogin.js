@@ -1,7 +1,8 @@
 let app = getApp();
 let util = require('../../utils/util');
 let esTools = require('../../utils/eshop/tools');
-
+//分享的统一设置
+const onloadstart = require('../../utils/util.js').onloadstart;
 // wxlogin.js
 
 Page({
@@ -12,7 +13,11 @@ Page({
     data: {
       isShow:false
     },
-
+    onShareAppMessage: function(res){
+        //首页初始化可转发
+        var data = onloadstart.call(this, res);
+        return data;
+      },
     /**
      * 生命周期函数--监听页面加载
      */

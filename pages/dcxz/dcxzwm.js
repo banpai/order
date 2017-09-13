@@ -1,6 +1,7 @@
 //添加尾部技术支持信息的方法
 const getFooter = require('../../template/tecSupport/tecSupport.js').getFooter;
-
+//分享的统一设置
+const onloadstart = require('../../utils/util.js').onloadstart;
 //获取应用实例
 var app = getApp()
 //获取提交订单详情数据接口地址
@@ -40,6 +41,11 @@ Page({
     array: ['08:30', '09:00', '09:30', '10:00'],
     index: 0,
     time: '00:00'
+  },
+  onShareAppMessage: function(res){
+    //首页初始化可转发
+    var data = onloadstart.call(this, res);
+    return data;
   },
   //单列时间选择器
   bindPickerChange: function (e) {

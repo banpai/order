@@ -3,9 +3,12 @@ const getFooter = require('../../template/tecSupport/tecSupport.js').getFooter;
 
 var app = getApp()
 //获取订单详情的接口
-const stateurl = require('../../config').state
+const stateurl = require('../../config').state;
 //订单取消的接口
-const cancelorder_apiurl =  require('../../config').cancelorder_api
+const cancelorder_apiurl =  require('../../config').cancelorder_api;
+
+//分享的统一设置
+const onloadstart = require('../../utils/util.js').onloadstart;
 
 function _next(n, fun) {
   var that = this;
@@ -64,6 +67,11 @@ Page({
     progress2: 0,
     disabled2: false,
     yq1: "background: #F1544E;"
+  },
+  onShareAppMessage: function(res){
+    //首页初始化可转发
+    var data = onloadstart.call(this, res);
+    return data;
   },
   onLoad: function (options) {
     //添加尾部技术支持的信息

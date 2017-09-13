@@ -6,10 +6,16 @@ const indexUrl = require('../../config').index
 const menuurl = require('../../config').menu
 //添加尾部技术支持信息的方法
 const getFooter = require('../../template/tecSupport/tecSupport.js').getFooter;
-
+//分享的统一设置
+const onloadstart = require('../../utils/util.js').onloadstart;
 Page({
   data: {
     "cesh": [1, 1, 1]
+  },
+  onShareAppMessage: function(res){
+    //首页初始化可转发
+    var data = onloadstart.call(this, res);
+    return data;
   },
   //查看地图
   seeMap: function () {
@@ -93,4 +99,5 @@ Page({
       });
     }, true);
   }
-})
+});
+

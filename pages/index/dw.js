@@ -1,7 +1,14 @@
 //获取应用实例
 var app = getApp()
+//分享的统一设置
+const onloadstart = require('../../utils/util.js').onloadstart;
 Page({
   data: {
+  },
+  onShareAppMessage: function(res){
+    //首页初始化可转发
+    var data = onloadstart.call(this, res);
+    return data;
   },
   //初始化
   onLoad: function () {

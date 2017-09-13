@@ -1,10 +1,17 @@
 //index.js
+//分享的统一设置
+const onloadstart = require('../../utils/util.js').onloadstart;
 //获取应用实例
 var app = getApp()
 Page({
   data: {
     motto: 'Hello World',
     userInfo: {}
+  },
+  onShareAppMessage: function(res){
+    //首页初始化可转发
+    var data = onloadstart.call(this, res);
+    return data;
   },
   //事件处理函数
   bindViewTap: function() {

@@ -1,11 +1,18 @@
 let app = getApp();
 let wsTools = require('../../utils/wshoto');
 let esTools = require('../../utils/eshop/tools');
+//分享的统一设置
+const onloadstart = require('../../utils/util.js').onloadstart;
 Page({
   data: {
     windowHeight: 0,  //显示屏高度
     windowWidth: 0,  //显示屏宽度
     animationData: {}
+  },
+  onShareAppMessage: function(res){
+    //首页初始化可转发
+    var data = onloadstart.call(this, res);
+    return data;
   },
   loginState: function () {
     // wx.redirectTo({

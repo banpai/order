@@ -1,7 +1,9 @@
 var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 var app = getApp()
 //获取订单列表接口
-const wdurl = require('../../config').wd
+const wdurl = require('../../config').wd;
+//分享的统一设置
+const onloadstart = require('../../utils/util.js').onloadstart;
 Page({
     data: {
         tabs: ["待确认", "已确认", "完成"],
@@ -14,6 +16,11 @@ Page({
         status: 0,
         icon: ''
     },
+    onShareAppMessage: function(res){
+        //首页初始化可转发
+        var data = onloadstart.call(this, res);
+        return data;
+      },
     onLoad: function () {
         var that = this;
         //获取数据
