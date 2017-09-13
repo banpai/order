@@ -1,4 +1,8 @@
 //index.js
+//获取点餐数据接口
+const time_api = require('../../config').time_api
+
+
 //获取应用实例
 var app = getApp()
 Page({
@@ -24,6 +28,17 @@ Page({
       }
     })
   },
+  onLoad: function(){
+    var that = this;
+    app.ajax(time_api, {}, function(res){
+      that.setData({
+        tarray:  res.data,
+        time: res.data[0]
+      })
+      // that.data.tarray = res.data;
+      console.log(that.data.tarray);
+    }, true);
+  },
   open: function () {
     var that = this;
     var tarray = [
@@ -35,7 +50,7 @@ Page({
       "2017-08-31"
     ];
     wx.showActionSheet({
-      itemList: tarray,
+      itemList: that.data.tarray,
       success: function (res) {
         if (!res.cancel) {
           that.setData({

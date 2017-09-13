@@ -1,8 +1,8 @@
 {
   "pages":[
+    "pages/index/index",
     "pages/strap/strap",
     "pages/wxlogin/wxlogin",
-    "pages/index/index",
     "pages/index/dw",
     "pages/logs/logs",
     "pages/dc/dc",
