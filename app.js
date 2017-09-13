@@ -21,52 +21,72 @@ App({
       })
     }
   },
-  authorize : function(type, cb){
-      let that = this;
-      // $scopeLists = ['scope.userInfo', 'scope.address', 'scope.userLocation'];
-
-      wx.getSetting({
-          success: (res) => {
-              if(res.authSetting[type] === false){
-                  wx.authorize({
-                      scope: type,
-                      success() {
-                          that.callback({statusCode : 1, data: true}, cb)
-                      },
-                      fail(){
-                          that.callback({statusCode : 0, data: false}, cb)
-                      }
-                  });
-              }else{
-                  that.callback({statusCode : 1, data: true}, cb)
-              }
-          }
+  getUserInfo: function (cb) {
+    var that = this;
+    if (this.globalData.userInfo) {
+      typeof cb === "function" && cb(this.globalData.userInfo)
+    } else {
+      //调用登录接口
+      wx.getUserInfo({
+        withCredentials: true,
+        success: function (res) {
+          that.globalData.userInfo = res
+          typeof cb === "function" && cb(that.globalData.userInfo)
+        },
+        fail: function (res) {
+          console.log('app.js getUserInfo fail.');
+          // that.globalData.userInfo = res
+          typeof cb === "function" && cb(res)
+        }
       })
+    }
+  },
+  authorize: function (type, cb) {
+    let that = this;
+    // $scopeLists = ['scope.userInfo', 'scope.address', 'scope.userLocation'];
+
+    wx.getSetting({
+      success: (res) => {
+        if (res.authSetting[type] === false) {
+          wx.authorize({
+            scope: type,
+            success() {
+              that.callback({ statusCode: 1, data: true }, cb)
+            },
+            fail() {
+              that.callback({ statusCode: 0, data: false }, cb)
+            }
+          });
+        } else {
+          that.callback({ statusCode: 1, data: true }, cb)
+        }
+      }
+    })
 
   },
-  callback : function(res, cb){
-      if (typeof cb === "object" || typeof cb === "function") {
-          if (typeof cb === "function") {
-              cb(res);
-              return true;
-          }
-
-          if (res.statusCode === 1) {
-              if (typeof cb.success === "function") {
-                  cb.success(res);
-              }
-          } else {
-              if (typeof cb.fail === "function") {
-                  cb.fail(res);
-              }
-          }
-
-          if (typeof cb.complete === 'function') {
-              cb.complete(res);
-          }
+  callback: function (res, cb) {
+    if (typeof cb === "object" || typeof cb === "function") {
+      if (typeof cb === "function") {
+        cb(res);
+        return true;
       }
 
-      return res;
+      if (res.statusCode === 1) {
+        if (typeof cb.success === "function") {
+          cb.success(res);
+        }
+      } else {
+        if (typeof cb.fail === "function") {
+          cb.fail(res);
+        }
+      }
+
+      if (typeof cb.complete === 'function') {
+        cb.complete(res);
+      }
+    }
+
+    return res;
   },
   //封装获取数据的方式
   ajax: function (url, data, fun, post) {
@@ -89,22 +109,22 @@ App({
       url: url,
       method: method,
       data: data,
-      dataType:'json',
+      dataType: 'json',
       // header: header,
       success: function (res) {
         console.log(url);
         console.log(JSON.stringify(res));
-        if(res.data.status == 1){
+        if (res.data.status == 1) {
           wx.hideLoading();
           var data = {
             errcode: '0',
             data: res.data.result
           }
           fun(data);
-        }else{
+        } else {
           wx.hideLoading();
           var message = "获取数据失败";
-          if(res.data.message){
+          if (res.data.message) {
             message = res.data.message;
           }
           wx.showToast({
@@ -114,7 +134,7 @@ App({
           })
         }
       },
-      fail: function(res){
+      fail: function (res) {
         console.log('fail data======' + JSON.stringify(data));
         console.log('fail res======' + JSON.stringify(res));
         wx.hideLoading();

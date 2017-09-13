@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/index/index",
     "pages/strap/strap",
+    "pages/index/index",
     "pages/wxlogin/wxlogin",
     "pages/index/dw",
     "pages/logs/logs",

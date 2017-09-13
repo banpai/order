@@ -18,15 +18,14 @@ Page({
         console.log('strap.js onLoad getApiToken');
         console.log(res);
       }
-        console.log('rex');
       // if (res.statusCode === 1) {
         esTools.fn.getSession(function (rex) {
-          console.log(rex);
+          console.log(rex.statusCode === 1);
           // console.log('rex r');
           // console.log(rex);
           wx.hideLoading();
           if (rex.statusCode === 1) {
-            wx.switchTab({
+            wx.redirectTo({
               url: '../index/index'
             });
           } else {
