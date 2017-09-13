@@ -153,7 +153,7 @@ Page({
           appid: appid
         };
         var postdatastr = JSON.stringify(postData);
-        app.ajax(podcurl, postdatastr, function (m) {
+        app.ajax(podcurl, postData, function (m) {
           
           //这边支付接口传回的参数需要重新处理
           var id = m.data.orderid;

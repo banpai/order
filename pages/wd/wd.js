@@ -31,7 +31,7 @@ Page({
                 id: -1
             };
             var postdata = JSON.stringify(databp);
-            app.ajax(wdurl, postdata, function (res) {
+            app.ajax(wdurl, databp, function (res) {
                 var tabs = that.tabs;
                 var activeIndex = that.activeIndex;
                 var sliderOffset = that.sliderOffset;
@@ -77,19 +77,19 @@ Page({
             };
             var postdata = JSON.stringify(databp);
             if(status == 0){
-                app.ajax(wdurl, postdata, function (res) {
+                app.ajax(wdurl, databp, function (res) {
                     that.setData({
                         list0: res.data
                     });
                 }, true);
             }else if(status == 1){
-                app.ajax(wdurl, postdata, function (res) {
+                app.ajax(wdurl, databp, function (res) {
                     that.setData({
                         list1: res.data
                     });
                 }, true);
             }else if(status == 2){
-                app.ajax(wdurl, postdata, function (res) {
+                app.ajax(wdurl, databp, function (res) {
                     that.setData({
                         list2: res.data
                     });

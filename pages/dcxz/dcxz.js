@@ -132,7 +132,7 @@ Page({
               appid: appid
             };
             var jsonur = JSON.stringify(postData);
-            app.ajax(podcurl, jsonur, function(m){
+            app.ajax(podcurl, postData, function(m){
               //这边支付接口传回的参数需要重新处理
               var id = m.data.orderid;
               var url = '../payment/payment?id=' + id;

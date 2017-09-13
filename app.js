@@ -104,11 +104,14 @@ App({
         "Content-Type": "application/x-www-form-urlencoded"
       };
     }
+    data.sessionkey = wx.getStorageSync('sessionKey').sessionkey;
+    console.log(data.sessionkey);
+    var datachuli = JSON.stringify(data);
     //获取数据
     wx.request({
       url: url,
       method: method,
-      data: data,
+      data: datachuli,
       dataType: 'json',
       // header: header,
       success: function (res) {

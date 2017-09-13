@@ -89,7 +89,7 @@ Page({
         orderid: options.id
       };
       var postdata = JSON.stringify(databp);
-      app.ajax(stateurl, postdata, function (res) {
+      app.ajax(stateurl, databp, function (res) {
         that.setData({
           state: res.data,
           flag: options.flag,
@@ -138,7 +138,7 @@ Page({
               id: that.data.id
             };
             var postdata = JSON.stringify(databp);
-            app.ajax(cancelorder_apiurl, postdata, function (res) {
+            app.ajax(cancelorder_apiurl, databp, function (res) {
               // 关闭当前页面返回上级页面
               wx.redirectTo({
                 url: '../wd/wd'

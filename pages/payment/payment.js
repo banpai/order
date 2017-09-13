@@ -26,7 +26,7 @@ Page({
       };
       var postdatastr = JSON.stringify(postdata);
       //获取数据
-      app.ajax(paymenturl, postdatastr, function (res) {
+      app.ajax(paymenturl, postdata, function (res) {
         that.setData({
           xs: res.data,
           flag: options.flag,

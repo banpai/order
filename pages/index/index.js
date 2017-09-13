@@ -50,7 +50,7 @@ Page({
     }
     var postdatastr = JSON.stringify(postdata);
     //获取数据
-    app.ajax(indexUrl, postdatastr, function (res) {
+    app.ajax(indexUrl, postdata, function (res) {
       //渲染其他数据
       that.setData({
         info: res.data
@@ -92,7 +92,7 @@ Page({
           }, this);
         }, this);
       }
-      app.ajax(menuurl, postdatastr, function (m) {
+      app.ajax(menuurl, postdata, function (m) {
         app.globalData.menu = new Cgarry(m.data);
         app.globalData.wmmenu = new Cgarry(m.data);
         app.globalData.pdmenu = new Cgarry(m.data);

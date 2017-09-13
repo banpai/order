@@ -16,20 +16,20 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
-//页面初始化统一调用的js,分享设置
+//页面初始化统一分享设置
 function onloadstart(res) {
   if (res.from === 'button') {
     // 来自页面内转发按钮
     console.log(res.target)
   }
-  var imageUrl = false;
+  var imageUrl = '';
   if(app.globalData.showdata.index_img){
     imageUrl = app.globalData.showdata.index_img;
   }
   return {
     title: false,
     path: '/pages/index/index',
-    imageUrl: ,
+    imageUrl: imageUrl,
     success: function(res) {
       // 转发成功
     },
