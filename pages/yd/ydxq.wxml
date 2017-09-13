@@ -5,9 +5,9 @@
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_access">
             <view class="weui-cell__bd">
-                <view style="display: inline-block; vertical-align: middle">没有您符合的时间段</view>
+                <view wx:if="{{falg}}" style="display: inline-block; vertical-align: middle;color: #999;">没有您符合的时间段</view>
+                <view class="djsj" bindtap="skipyd" data-time="10:00">09:00</view>
             </view>
-            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </view>
     </view>
     <!--预订时间 end-->

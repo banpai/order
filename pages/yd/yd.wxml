@@ -13,7 +13,7 @@
     <!--预订时间 end-->
 
     <!--下一步按钮 start-->
-    <button class="weui-btn" type="primary" bindtap="nextbp">下一步</button>
+    <button class="weui-btn" type="primary" bindtap="nextbp" data-riqi="{{time}}">下一步</button>
     <!--下一步按钮 end-->
     <template is="footer" data="{{...tecSupport}}"/>
 </view>
