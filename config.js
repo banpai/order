@@ -4,28 +4,27 @@
 
 // 此处主机域名是腾讯云解决方案分配的域名
 // 小程序后台服务解决方案：https://www.qcloud.com/solution/la
-
-var host = "https://diancan.wshoto.com";
+//
+// var host = "https://diancan.wshoto.com";
 // var host = "https://api.shanggao.wshoto.com";
+//测试支付接口的域名
+var host = "https://ws7xcx-test.wshoto.com";
 
 //友回忆炸串炒饭的接口参数
-var storeid = '&i=3&storeid=6&weid=3';
-var ids = '&i=3&id=6&weid=3';
+// var storeid = '&i=3&storeid=6&weid=3';
+// var ids = '&i=3&id=6&weid=3';
 //王兴记的接口参数
-// var storeid = '&i=2&storeid=5&weid=2';
-// var ids = '&i=2&id=5&weid=2';
+var storeid = '&i=2&storeid=5&weid=2';
+var ids = '&i=2&id=5&weid=2';
 //花甲的接口参数
 // var storeid = '&i=2&storeid=2&weid=2';
 // var ids = '&i=2&id=2&weid=2';
-
 //王兴记上高
 // var storeid = '&i=5&storeid=5&weid=5';
 // var ids = '&i=5&id=5&weid=5';
-
 //花甲上高
 // var storeid = '&i=3&storeid=2&weid=3';
 // var ids = '&i=3&id=2&weid=3';
-
 
 
 var config = {
@@ -50,7 +49,9 @@ var config = {
     //取消订单接口
     cancelorder_api: `${host}/app/index.php?c=entry${storeid}&mode=4&do=cancelorder_api&m=weisrc_dish`,
     //获取时间
-    time_api: `${host}/app/index.php?c=entry${storeid}&mode=4&do=time_api&m=weisrc_dish`
+    time_api: `${host}/app/index.php?c=entry${storeid}&mode=4&do=time_api&m=weisrc_dish`,
+    //支付接口
+    order_payment: `${host}/app/index.php?c=entry${storeid}&mode=4&do=order_payment&m=weisrc_dish`
 };
 
 module.exports = config

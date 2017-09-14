@@ -35,6 +35,7 @@ Page({
   },
   //初始化
   onLoad: function () {
+    
     //添加尾部技术支持的信息
     getFooter.call(this);
     var that = this;

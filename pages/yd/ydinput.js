@@ -84,10 +84,11 @@ Page({
   },
   //请选择收货地址
   skipdz: function () {
-    var url = "dcxzinput"
-    wx.redirectTo({
-      url: 'dcxzinput'
-    })
+    tusi('开发中');
+    // var url = "dcxzinput"
+    // wx.redirectTo({
+    //   url: 'dcxzinput'
+    // })
   },
   //提交订单
   sub: function (e) {
@@ -120,11 +121,12 @@ Page({
           //差一个post提交数据
           var id = '0';
           var url = '../dcxz/dcxzwm?id=' + id;
-          tusi('提交成功', true, function () {
-            wx.redirectTo({
-              url:url
-            });
-          });
+          tusi('开发中');
+          // tusi('提交成功', true, function () {
+          //   wx.redirectTo({
+          //     url:url
+          //   });
+          // });
         }
       })
     }

@@ -11,7 +11,7 @@
     <!--提示信息 end-->
 
     <!--刷新状态的按钮 start-->
-    <button class="weui-btn" type="primary"style="margin-top: 35px;">预约点菜</button>
+    <button class="weui-btn" type="primary"style="margin-top: 35px;" bindtap="skipmenu">预约点菜</button>
     <button class="weui-btn cebt" type="default">取消排队</button>
     <button class="weui-btn cebt" type="default">刷新状态</button>
     <!--刷新状态的按钮 end-->

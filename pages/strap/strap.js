@@ -19,6 +19,8 @@ Page({
     //   url: '../index/index'
     // });
     // 登陆页面，自动获取token。
+    wx.setStorageSync('sessionKey', null);
+    wx.setStorageSync('apiToken', null);
     // 其他页面，根据自行考虑是否执行。
     wsTools.fn.getApiToken(function (res) {
       if (app.globalData.debug === true) {

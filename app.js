@@ -5,7 +5,6 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
   },
   getAppid: function (bc) {
     var that = this;
@@ -105,7 +104,6 @@ App({
       };
     }
     data.sessionkey = wx.getStorageSync('sessionKey').sessionkey;
-    console.log(data.sessionkey);
     var datachuli = JSON.stringify(data);
     //获取数据
     wx.request({
@@ -115,8 +113,6 @@ App({
       dataType: 'json',
       // header: header,
       success: function (res) {
-        console.log(url);
-        console.log(JSON.stringify(res));
         if (res.data.status == 1) {
           wx.hideLoading();
           var data = {
@@ -138,8 +134,6 @@ App({
         }
       },
       fail: function (res) {
-        console.log('fail data======' + JSON.stringify(data));
-        console.log('fail res======' + JSON.stringify(res));
         wx.hideLoading();
         wx.showToast({
           title: '接口调用失败',

@@ -11,7 +11,7 @@ let config = {
     /**
      * 所使用域名
      */
-    'baseUri' : 'https://diancan.wshoto.com/',
+    'baseUri': 'https://ws7xcx-test.wshoto.com/',
 
     /**
      * 登陆账号信息

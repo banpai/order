@@ -16,7 +16,7 @@ Page({
     cost: 0,
     number: 0
   },
-  onShareAppMessage: function(res){
+  onShareAppMessage: function (res) {
     //首页初始化可转发
     var data = onloadstart.call(this, res);
     return data;
@@ -29,7 +29,6 @@ Page({
     var number = this.data.number;
     var flag = this.data.flag;
     var cost = Number(this.data.cost) + Number(this.data.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].price);
-
     if (flag === "0") {
       app.globalData.menu.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].numb++;
       app.globalData.menu.cost = cost;
@@ -134,22 +133,28 @@ Page({
       }, this);
     }, this);
     var letdata = JSON.stringify(tjdata);
-    //存本地缓存
-    wx.setStorage({
-      key: "letdata",
-      data: letdata,
-      complete: function () {
-        //选好了，点击购买
-        var url = '../dcxz/dcxz';
-        if (that.options.flag == '1') {
-          url = '../dcxz/dcxzwm';
+    if (that.data.flag == '2') {
+      wx.redirectTo({
+        url: '../pd/pdstate'
+      })
+    } else {
+      //存本地缓存
+      wx.setStorage({
+        key: "letdata",
+        data: letdata,
+        complete: function () {
+          //选好了，点击购买
+          var url = '../dcxz/dcxz';
+          if (that.options.flag == '1') {
+            url = '../dcxz/dcxzwm';
+          }
+          if (that.data.cost != 0) {
+            wx.redirectTo({
+              url: url
+            });
+          }
         }
-        if (that.data.cost != 0) {
-          wx.redirectTo({
-            url: url
-          });
-        }
-      }
-    })
+      });
+    }
   }
 })
