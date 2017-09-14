@@ -7,11 +7,13 @@
  * listsUri : 交互地址池
  */
 
+const host = require('../config').host;
+
 let config = {
     /**
      * 所使用域名
      */
-    'baseUri': 'https://ws7xcx-test.wshoto.com/',
+  'baseUri': host,
 
     /**
      * 登陆账号信息

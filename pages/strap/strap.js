@@ -3,6 +3,7 @@ let wsTools = require('../../utils/wshoto');
 let esTools = require('../../utils/eshop/tools');
 //分享的统一设置
 const onloadstart = require('../../utils/util.js').onloadstart;
+const loginflag = require('../../config').loginflag;
 Page({
   data: {
     windowHeight: 0,  //显示屏高度
@@ -18,33 +19,40 @@ Page({
     // wx.redirectTo({
     //   url: '../index/index'
     // });
-    // 登陆页面，自动获取token。
-    wx.setStorageSync('sessionKey', null);
-    wx.setStorageSync('apiToken', null);
-    // 其他页面，根据自行考虑是否执行。
-    wsTools.fn.getApiToken(function (res) {
-      if (app.globalData.debug === true) {
-        console.log('strap.js onLoad getApiToken');
-        console.log(res);
-      }
-      // if (res.statusCode === 1) {
-      esTools.fn.getSession(function (rex) {
-        console.log(rex.statusCode === 1);
-        // console.log('rex r');
-        // console.log(rex);
-        wx.hideLoading();
-        if (rex.statusCode === 1) {
-          wx.redirectTo({
-            url: '../index/index'
-          });
-        } else {
-          wx.redirectTo({
-            url: '../login/login'
-          });
+    if (loginflag){
+      // 登陆页面，自动获取token。
+      wx.setStorageSync('sessionKey', null);
+      wx.setStorageSync('apiToken', null);
+      // 其他页面，根据自行考虑是否执行。
+      wsTools.fn.getApiToken(function (res) {
+        if (app.globalData.debug === true) {
+          console.log('strap.js onLoad getApiToken');
+          console.log(res);
         }
+        // if (res.statusCode === 1) {
+        esTools.fn.getSession(function (rex) {
+          console.log(rex.statusCode === 1);
+          // console.log('rex r');
+          // console.log(rex);
+          wx.hideLoading();
+          if (rex.statusCode === 1) {
+            wx.redirectTo({
+              url: '../index/index'
+            });
+          } else {
+            wx.redirectTo({
+              url: '../login/login'
+            });
+          }
+        });
+        // }
+      })
+    }else{
+      wx.redirectTo({
+        url: '../index/index'
       });
-      // }
-    })
+    }
+    
   },
   onLoad(options) {
     this.loginState();
