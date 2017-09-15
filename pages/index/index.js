@@ -9,7 +9,8 @@ const getFooter = require('../../template/tecSupport/tecSupport.js').getFooter;
 //分享的统一设置
 const onloadstart = require('../../utils/util.js').onloadstart;
 //获取排队的接口
-const tablelist =  require('../../config').tablelist;
+const queue =  require('../../config').queue;
+const ajax = require('../../utils/util.js').ajax;
 Page({
   data: {
     "cesh": [1, 1, 1]
@@ -18,22 +19,18 @@ Page({
   pdfun: function(){
     var postdata = {};
     //获取数据
-    app.ajax(tablelist, postdata, function (res) {
+    ajax(queue, postdata, function (res) {
       console.log(res);
-    }, true);
-    var url = ''
-    wx.redirectTo({
-      url: '',
-      success: function(res){
-        // success
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
+      wx.setStorageSync('queue', res.data);
+      var url = '../pd/pd';
+      if(res.data.cur_queue){
+        url = '../pd/pdstate';
       }
-    })
+      wx.navigateTo({
+        url: url
+      });
+    }, true);
+    
   },
   onShareAppMessage: function(res){
     //首页初始化可转发

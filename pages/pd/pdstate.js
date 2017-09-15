@@ -2,10 +2,14 @@
 var app = getApp()
 //分享的统一设置
 const onloadstart = require('../../utils/util.js').onloadstart;
+//获取排队的接口
+const queue = require('../../config').queue;
+const ajax = require('../../utils/util.js').ajax;
 Page({
   data: {
     motto: 'Hello World',
-    userInfo: {}
+    userInfo: {},
+    numkk: ''
   },
   onShareAppMessage: function(res){
     //首页初始化可转发
@@ -18,6 +22,24 @@ Page({
     })
   },
   onLoad: function () {
-    var that = this
+    var that = this;
+    var data = wx.getStorageSync('queue');
+    var numkk = Number(data.cur_queue.num) - Number(data.wait_count);
+    this.setData({
+      m: data,
+      numkk: numkk
+    });
+  },
+  shuax: function () {
+    var that = this;
+    //获取数据
+    var postdata = {};
+    ajax(queue, postdata, function (res) {
+      var numkk = Number(res.data.cur_queue.num) - Number(res.data.wait_count);
+      that.setData({
+        m: res.data,
+        numkk: numkk
+      });
+    }, true);
   }
 });

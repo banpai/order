@@ -3,7 +3,10 @@ const getFooter = require('../../template/tecSupport/tecSupport.js').getFooter;
 //分享的统一设置
 const onloadstart = require('../../utils/util.js').onloadstart;
 //获取应用实例
-var app = getApp()
+var app = getApp();
+//获取排队的接口
+const reservationdetail = require('../../config').reservationdetail;
+const ajax = require('../../utils/util.js').ajax;
 
 //封装tusi
 function tusi(str, flag, fun) {
@@ -73,30 +76,16 @@ Page({
   onLoad: function (options) {
     this.setData({
       riqi: options.riqi,
-      time: options.time
+      time: options.begintime
     });
     //添加尾部技术支持的信息
     getFooter.call(this);
-    var that = this
-    //从本地缓存获取数据
-    wx.getStorage({
-      key: 'mymsgwm',
-      success: function (res) {
-        var infodata = JSON.parse(res.data);
-        var radioItems = that.data.radioItems;
-        for (var i = 0, len = radioItems.length; i < len; ++i) {
-          radioItems[i].checked = radioItems[i].value == infodata.sex;
-        }
-        that.setData({
-          name: infodata.name,
-          tel: infodata.tel,
-          sex: infodata.sex,
-          radioItems: radioItems,
-          address: infodata.address,
-          addrdetail: infodata.addrdetail
-        });
-      }
-    })
+    var that = this;
+    //获取数据
+    var postdata = {};
+    ajax(reservationdetail, postdata, function (res) {
+      console.log(res);
+    }, true);
   },
   ceshiradio: function(){
     var that = this;

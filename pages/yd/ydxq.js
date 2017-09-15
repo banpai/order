@@ -3,6 +3,9 @@
 const getFooter = require('../../template/tecSupport/tecSupport.js').getFooter;
 //分享的统一设置
 const onloadstart = require('../../utils/util.js').onloadstart;
+//获取排队的接口
+const reservationindex = require('../../config').reservationindex;
+const ajax = require('../../utils/util.js').ajax;
 //获取应用实例
 var app = getApp()
 Page({
@@ -18,6 +21,20 @@ Page({
     return data;
   },
   onLoad: function (o) {
+    var that = this;
+    //获取数据
+    var postdata = {};
+    ajax(reservationindex, postdata, function (res) {
+      console.log(res.data.store.begintime);
+      var btime = res.data.store.begintime;
+      var endtime =  res.data.store.endtime;
+      var begintime = btime + '-' + endtime;
+      that.setData({
+        begintime: begintime,
+        btime: btime,
+        endtime: endtime
+      });
+    }, true);
     //添加尾部技术支持的信息
     getFooter.call(this);
     this.setData({
@@ -27,7 +44,7 @@ Page({
   skipyd: function(o){
     var time = o.currentTarget.dataset.time;
     console.log(this.data.riqi);
-    var url = 'ydinput?time=' + time + '&riqi=' + this.data.riqi;
+    var url = 'ydinput?time=' + time + '&riqi=' + this.data.riqi +  '&begintime=' + this.data.begintime +  '&btime=' + this.data.btime +  '&endtime=' + this.data.endtime;
     wx.navigateTo({
       url: url
     });

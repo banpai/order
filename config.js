@@ -66,7 +66,17 @@ var config = {
     //支付接口
     order_payment: `${host}app/index.php?c=entry${storeid}&mode=4&do=order_payment&m=weisrc_dish`,
     //查询排队接口
-    tablelist: `${host}app/index.php?c=entry${storeid}&mode=4&do=tablelist&m=weisrc_dish`
+    tablelist: `${host}app/index.php?c=entry${storeid}&mode=4&do=tablelist&m=weisrc_dish`,
+    //排队的查询接口
+    queue: `${host}app/index.php?c=entry${storeid}&mode=4&do=queue&m=weisrc_dish`,
+    //保存的接口
+    setqueue:`${host}app/index.php?c=entry${storeid}&mode=4&do=setqueue&m=weisrc_dish`,
+    //预约的接口
+    reservationindex:`${host}app/index.php?c=entry${storeid}&mode=4&do=reservationindex&m=weisrc_dish`,
+    //预约的接口3
+    reservationdetail:`${host}app/index.php?c=entry${storeid}&mode=4&do=reservationdetail&m=weisrc_dish`,
+    //预约接口4
+    addtoorder:`${host}app/index.php?c=entry${storeid}&mode=4&do=addtoorder&m=weisrc_dish`
 };
 
-module.exports = config
+module.exports = config;
