@@ -6,27 +6,35 @@
 var host = "https://ws7xcx-test.wshoto.com/";
 var storeid = '&i=2&storeid=5&weid=2';
 var ids = '&i=2&id=5&weid=2';
+var apiname = 'ws7test';
+var  apipass = '69534b32ab51f8cb802720d30fedb523';
 
 // var host = "https://diancan.wshoto.com/";
 //友回忆炸串炒饭的接口参数
 // var storeid = '&i=3&storeid=6&weid=3';
 // var ids = '&i=3&id=6&weid=3';
+// var apiname = 'diancan-yhy';
+// var  apipass = '69534b32ab51f8cb802720d30fedb523';
 //王兴记的接口参数
-// var storeid = '&i=2&storeid=5&weid=2';
-// var ids = '&i=2&id=5&weid=2';
+// var storeid = '&i=9&storeid=5&weid=9';
+// var ids = '&i=9&id=5&weid=9';
+// var apiname = 'diancan-wxj';
+// var  apipass = '69534b32ab51f8cb802720d30fedb523';
 //花甲的接口参数
-// var storeid = '&i=2&storeid=2&weid=2';
-// var ids = '&i=2&id=2&weid=2';
+// var storeid = '&i=10&storeid=2&weid=10';
+// var ids = '&i=10&id=2&weid=10';
+// var apiname = 'diancan-hjhj';
+// var  apipass = '69534b32ab51f8cb802720d30fedb523';
+
+
 
 //var host = "https://api.shanggao.wshoto.com/";
 //王兴记上高
 // var storeid = '&i=5&storeid=5&weid=5';
 // var ids = '&i=5&id=5&weid=5';
-
 //花甲上高
 // var storeid = '&i=3&storeid=2&weid=3';
 // var ids = '&i=3&id=2&weid=3';
-
 
 var config = {
     // 下面的地址配合云端 Server 工作
@@ -35,6 +43,8 @@ var config = {
     ids,
     //是否走登录流程
     loginflag: true,
+    apiname: apiname,
+    apipass: apipass,
     //主页信息接口
     index: `${host}app/index.php?c=entry${ids}&do=detail_api&m=weisrc_dish`,
     //菜单信息

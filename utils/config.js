@@ -8,6 +8,8 @@
  */
 
 const host = require('../config').host;
+const apiname = require('../config').apiname;
+const apipass = require('../config').apipass;
 
 let config = {
     /**
@@ -19,8 +21,8 @@ let config = {
      * 登陆账号信息
      */
     'passport' : {
-        'uname': 'ws7test',
-        'upass': '69534b32ab51f8cb802720d30fedb523'
+        'uname': apiname,
+        'upass': apipass
     },
 
     /**

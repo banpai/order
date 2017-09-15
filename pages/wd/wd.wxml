@@ -1,4 +1,7 @@
+<import src="../../template/tecSupport/tecSupport.wxml"/>
 <view class="page">
+        <scroll-view scroll-y = true >
+        
     <view class="page__bd">
         <view class="weui-tab">
             <view class="weui-navbar">
@@ -25,6 +28,7 @@
                         </view>
                     </navigator>
                     <!--未确认内容 end-->
+                    <template is="footer" data="{{...tecSupport}}"/>
                 </view>
                 <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
                     <!--已确认的内容 start-->
@@ -41,6 +45,7 @@
                         </view>
                     </navigator>
                     <!--已确认的内容 end-->
+                    <template is="footer" data="{{...tecSupport}}"/>
                 </view>
                 <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
                     <!--完成的内容 start-->
@@ -57,8 +62,10 @@
                         </view>
                     </navigator>
                     <!--完成的内容 end-->
+                    <template is="footer" data="{{...tecSupport}}"/>
                 </view>
             </view>
         </view>
     </view>
+</scroll-view>
 </view>
