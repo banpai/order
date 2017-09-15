@@ -27,18 +27,40 @@ Page({
   data: {
     name: '',
     tel: '',
+    cost:'',
+    riqi: '',
+    time: '',
     address: "",
     addrdetail: "",
     sex: "1",
+    paymoney: '',
     radioItems: [
-      { name: '先生', value: '0' },
-      { name: '女士', value: '1', checked: true }
+      { 
+        name: '只订座', 
+        value: '0' , 
+        checked: true,
+        msg: '预付 ￥1'
+      },
+      { 
+        name: '提前下单', 
+        value: '1',
+        msg: '￥1 起订'
+      }
     ]
   },
   onShareAppMessage: function(res){
     //首页初始化可转发
     var data = onloadstart.call(this, res);
     return data;
+  },
+  onShow: function(){
+    var that = this;
+    var data = JSON.parse(wx.getStorageSync('letdata'));
+    if(data){
+      that.setData({
+        cost: data.cost
+      })
+    };
   },
   //打电话
   tapCall: function () {
@@ -48,7 +70,11 @@ Page({
     })
   },
   //初始化
-  onLoad: function () {
+  onLoad: function (options) {
+    this.setData({
+      riqi: options.riqi,
+      time: options.time
+    });
     //添加尾部技术支持的信息
     getFooter.call(this);
     var that = this
@@ -72,6 +98,18 @@ Page({
       }
     })
   },
+  ceshiradio: function(){
+    var that = this;
+    setTimeout(function(){
+      if(that.data.sex == 1){
+        //保存缓存
+        var url = '../dc/dc?flag=3';
+        wx.navigateTo({
+          url: url
+        })
+      }
+    }, 1);
+  },
   radioChange: function (e) {
     var radioItems = this.data.radioItems;
     for (var i = 0, len = radioItems.length; i < len; ++i) {
@@ -81,6 +119,7 @@ Page({
       radioItems: radioItems,
       sex: e.detail.value
     });
+    
   },
   //请选择收货地址
   skipdz: function () {

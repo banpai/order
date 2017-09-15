@@ -1,16 +1,39 @@
 //获取应用实例
-var app = getApp()
+var app = getApp();
 //获取主页数据接口
-const indexUrl = require('../../config').index
+const indexUrl = require('../../config').index;
 //获取点餐数据接口
-const menuurl = require('../../config').menu
+const menuurl = require('../../config').menu;
 //添加尾部技术支持信息的方法
 const getFooter = require('../../template/tecSupport/tecSupport.js').getFooter;
 //分享的统一设置
 const onloadstart = require('../../utils/util.js').onloadstart;
+//获取排队的接口
+const tablelist =  require('../../config').tablelist;
 Page({
   data: {
     "cesh": [1, 1, 1]
+  },
+  //排队方法
+  pdfun: function(){
+    var postdata = {};
+    //获取数据
+    app.ajax(tablelist, postdata, function (res) {
+      console.log(res);
+    }, true);
+    var url = ''
+    wx.redirectTo({
+      url: '',
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   },
   onShareAppMessage: function(res){
     //首页初始化可转发
@@ -35,7 +58,7 @@ Page({
   },
   //初始化
   onLoad: function () {
-    
+    wx.setStorageSync('letdata', null);
     //添加尾部技术支持的信息
     getFooter.call(this);
     var that = this;
@@ -97,6 +120,7 @@ Page({
         app.globalData.menu = new Cgarry(m.data);
         app.globalData.wmmenu = new Cgarry(m.data);
         app.globalData.pdmenu = new Cgarry(m.data);
+        app.globalData.yymenu = new Cgarry(m.data);
       });
     }, true);
   }

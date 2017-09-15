@@ -28,7 +28,10 @@ Page({
     this.data.number = + this.data.number + 1;
     var number = this.data.number;
     var flag = this.data.flag;
-    var cost = Number(this.data.cost) + Number(this.data.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].price);
+    var cost1 = Number(this.data.cost);
+    var cost2 = Number(this.data.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].price);
+    var cost = cost1 + cost2;
+    cost = +cost.toFixed(2);
     if (flag === "0") {
       app.globalData.menu.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].numb++;
       app.globalData.menu.cost = cost;
@@ -41,6 +44,10 @@ Page({
       app.globalData.pdmenu.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].numb++;
       app.globalData.pdmenu.cost = cost;
       app.globalData.pdmenu.number = number;
+    } else if (flag === "3") {
+      app.globalData.yymenu.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].numb++;
+      app.globalData.yymenu.cost = cost;
+      app.globalData.yymenu.number = number;
     }
     this.setData({
       cost: cost,
@@ -53,6 +60,7 @@ Page({
   removeFromTrolley: function (e) {
     var info = this.data.menu;
     var cost = Number(this.data.cost) - Number(this.data.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].price);
+    cost = +cost.toFixed(2);
     var numb;
     var number = this.data.number;
     var flag = this.data.flag;
@@ -72,6 +80,10 @@ Page({
         app.globalData.pdmenu.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].numb = numb;
         app.globalData.pdmenu.cost = cost;
         app.globalData.pdmenu.number = number;
+      } else if (flag === "3") {
+        app.globalData.yymenu.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].numb = numb;
+        app.globalData.yymenu.cost = cost;
+        app.globalData.yymenu.number = number;
       }
       this.setData({
         cost: cost,
@@ -109,6 +121,8 @@ Page({
       menu = app.globalData.wmmenu;
     } else if (options.flag === "2") {
       menu = app.globalData.pdmenu;
+    } else if (options.flag === "3") {
+      menu = app.globalData.yymenu;
     }
     that.setData({
       menu: menu.menu,
@@ -133,10 +147,27 @@ Page({
       }, this);
     }, this);
     var letdata = JSON.stringify(tjdata);
-    if (that.data.flag == '2') {
-      wx.redirectTo({
-        url: '../pd/pdstate'
-      })
+    if (that.data.flag == '3') {
+      //存本地缓存
+      wx.setStorage({
+        key: "letdata",
+        data: letdata,
+        complete: function () {
+          wx.navigateBack();
+        }
+      });
+    } else if (that.data.flag == '2') {
+      //还差一个接口提交
+      //存本地缓存
+      wx.setStorage({
+        key: "letdata",
+        data: letdata,
+        complete: function () {
+          wx.redirectTo({
+            url: '../pd/pdstate'
+          })
+        }
+      });
     } else {
       //存本地缓存
       wx.setStorage({

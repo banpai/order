@@ -161,6 +161,11 @@ App({
       cost: 0,
       number: 0,
       menu: []
+    },
+    yymenu: {
+      cost: 0,
+      number: 0,
+      menu: []
     }
   }
 })

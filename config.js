@@ -64,7 +64,9 @@ var config = {
     //获取时间
     time_api: `${host}app/index.php?c=entry${storeid}&mode=4&do=time_api&m=weisrc_dish`,
     //支付接口
-    order_payment: `${host}app/index.php?c=entry${storeid}&mode=4&do=order_payment&m=weisrc_dish`
+    order_payment: `${host}app/index.php?c=entry${storeid}&mode=4&do=order_payment&m=weisrc_dish`,
+    //查询排队接口
+    tablelist: `${host}app/index.php?c=entry${storeid}&mode=4&do=tablelist&m=weisrc_dish`
 };
 
 module.exports = config

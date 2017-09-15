@@ -46,14 +46,14 @@
         <view class="nb_text">预定</view>
       </view>
     </navigator>
-    <navigator url="../../pages/pd/pd" class="weui-flex__item nb_li" hover-class="weui-cell_active">
+    <view bindtap="pdfun" class="weui-flex__item nb_li" hover-class="weui-cell_active">
       <view class="placeholder nb_lid">
         <view class="nb_icon" style="background: #2DB6EF;border-radius: 50%;">
           <image class="ic" src="../../images/pd2.png" />
         </view>
         <view class="nb_text">排队</view>
       </view>
-    </navigator>
+    </view>
     <navigator url="../../pages/dc/dc?flag=1" class="weui-flex__item nb_li" hover-class="weui-cell_active">
       <view class="placeholder nb_lid">
         <view class="nb_icon" style="background: #FF5A5A;border-radius: 50%;">
@@ -68,6 +68,10 @@
   <!--加一个图片 start-->
   <image class="ic" src="{{info.index_img}}" style="width: 100%;" />
   <!--加一个图片 end-->
+
+  <!--领取会员卡 start-->
+  
+  <!--领取会员卡 end-->
 
   <!--文本栏 start-->
   <view class="weui-cells weui-cells_after-title" class="ebl" style="margin-top: 9px;">
