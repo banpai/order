@@ -1,11 +1,15 @@
-@jianju: 25rpx;
-@bg: #F3F3F3;
+@jianju: 30rpx;
+@bg: #F8F8F8;
 
 .footerb{
-    height: 185rpx;clear: both;
+    clear: both;
     background: @bg;
-    border-top: 30rpx solid #fff;
 }
+
+.bordertb {
+    margin-top: 0;
+}
+    
 //头部
 .header{
     // height: 165rpx;
@@ -41,7 +45,7 @@
 //navbar
 .navbar{
     background: #fff;
-    border-bottom: @jianju solid #F3F3F3;
+    margin-bottom: 30rpx;
     .nb_li{
         .nb_lid{
             .nb_icon{
@@ -59,7 +63,7 @@
             }
             .nb_text{
                 text-align: center;
-                padding-bottom: 25rpx;
+                padding-bottom: @jianju;
             }
         }
     }
@@ -91,5 +95,7 @@
 
 //领取会员卡
 .lqhyk{
-    border: 1px solid;
+    height: 90px;
+    margin-top: @jianju;
+    margin-bottom: @jianju;
 }

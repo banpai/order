@@ -1,7 +1,7 @@
 <import src="../../template/tecSupport/tecSupport.wxml"/>
 <view class="container">
   <!--头部名称 start-->
-  <view class="weui-panel weui-panel_access header">
+  <view class="weui-panel weui-panel_access header" style="margin-top: 30rpx;">
     <view class="weui-panel__bd" hover-class="weui-cell_active">
       <view class="gh"></view>
       <view class="weui-media-box weui-media-box_appmsg">
@@ -29,7 +29,7 @@
   <!--头部名称 end-->
 
   <!--navbar start-->
-  <view class="weui-flex navbar">
+  <view class="weui-flex navbar weui-panel bordertb">
     <navigator url="../../pages/dc/dc?flag=0" class="weui-flex__item nb_li" hover-class="weui-cell_active">
       <view class="placeholder nb_lid">
         <view class="nb_icon" style="background: #FFAD12;border-radius: 50%;">
@@ -66,15 +66,15 @@
   <!--navbar end-->
 
   <!--加一个图片 start-->
-  <image class="ic" src="{{info.index_img}}" style="width: 100%;" />
+  <image class="ic weui-panel bordertb" src="{{info.index_img}}" style="width: 100%;" />
   <!--加一个图片 end-->
 
   <!--领取会员卡 start-->
-  <!-- <view class="lqhyk"></view> -->
+  <!-- <view class="lqhyk weui-panel bordertb"></view> -->
   <!--领取会员卡 end-->
 
   <!--文本栏 start-->
-  <view class="weui-cells weui-cells_after-title" class="ebl" style="margin-top: 9px;">
+  <view class="weui-cells weui-cells_after-title" class="ebl weui-panel bordertb" style="margin-top: 9px;">
       <view class="weui-cell">
           <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
               <image src="../../images/1.png" class="ic"/>
@@ -110,7 +110,7 @@
               <view>营业时间：{{ info.starttime }}-{{ info.endtime }}</view>
           </view>
       </view>
-      <view class="weui-cell">
+      <view class="weui-cell" wx:if="{{info.wechat}}">
           <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
               <image src="../../images/5.png" class="ic"/>
           </view>
@@ -121,14 +121,14 @@
   </view>
   <!--文本栏 end-->
 
-  <view class="footerb" style="height: 150rpx;">
+  <view class="footerb">
     <template is="footer" data="{{...tecSupport}}"/>
   </view>
 
   <!--我的按钮 start-->
-  <navigator url="../../pages/wd/wd" class="my_bt">
+  <!-- <navigator url="../../pages/wd/wd" class="my_bt">
       <image class="ic" src="../../images/user.png" />
-  </navigator>
+  </navigator> -->
   <!--我的按钮 end-->
 
 </view>

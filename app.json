@@ -29,6 +29,24 @@
     "navigationBarBackgroundColor": "#F1544E",
     "backgroundColor": "#F1544E"
   },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "iconPath": "images/1_1_2.png",
+      "selectedIconPath": "images/1_1_1.png",
+      "text": "首页"
+    }, {
+      "pagePath": "pages/wd/wd",
+      "iconPath": "images/1_2_2.png",
+      "selectedIconPath": "images/1_2_1.png",
+      "text": "订单"
+    }
+    ]
+  },
   "networkTimeout": {
     "request": 10000,
     "connectSocket": 10000,

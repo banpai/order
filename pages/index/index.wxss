@@ -1,12 +1,13 @@
 .footerb {
-  height: 185rpx;
   clear: both;
-  background: #F3F3F3;
-  border-top: 30rpx solid #fff;
+  background: #F8F8F8;
+}
+.bordertb {
+  margin-top: 0;
 }
 .header {
   background: #fff;
-  border-bottom: 25rpx solid #F3F3F3;
+  border-bottom: 30rpx solid #F3F3F3;
 }
 .header .gh {
   height: 15rpx;
@@ -33,7 +34,7 @@
 }
 .navbar {
   background: #fff;
-  border-bottom: 25rpx solid #F3F3F3;
+  margin-bottom: 30rpx;
 }
 .navbar .nb_li .nb_lid .nb_icon {
   width: 80rpx;
@@ -50,7 +51,7 @@
 }
 .navbar .nb_li .nb_lid .nb_text {
   text-align: center;
-  padding-bottom: 25rpx;
+  padding-bottom: 30rpx;
 }
 .ebl {
   background: #fff;
@@ -73,5 +74,7 @@
   vertical-align: top;
 }
 .lqhyk {
-  border: 1px solid;
+  height: 90px;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
 }
