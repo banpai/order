@@ -7,7 +7,7 @@
 }
 .header {
   background: #fff;
-  border-bottom: 30rpx solid #F3F3F3;
+  border-bottom: 30rpx solid #F8F8F8;
 }
 .header .gh {
   height: 15rpx;
@@ -74,7 +74,41 @@
   vertical-align: top;
 }
 .lqhyk {
-  height: 90px;
-  margin-top: 30rpx;
+  height: 85px;
+  margin-top: 15rpx;
   margin-bottom: 30rpx;
+  position: relative;
+}
+.lqhyk .ceslid {
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+}
+.lqhyk .ceslid .wz {
+  margin-left: 30rpx;
+}
+.lqhyk .ljjh {
+  background-image: url('../../images/ljjh.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 172rpx;
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+  height: 60rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 14px;
+}
+.lqhyk .ceslid2 {
+  margin-left: 90rpx;
+  margin-top: 15rpx;
+  width: 400rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: break-word;
+  word-break: break-all;
+  font-size: 13px;
+  color: #FF7C56;
 }

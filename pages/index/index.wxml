@@ -70,11 +70,24 @@
   <!--加一个图片 end-->
 
   <!--领取会员卡 start-->
-  <!-- <view class="lqhyk weui-panel bordertb"></view> -->
+  <!-- <view class="lqhyk weui-panel bordertb">
+    <view class="ceslid">
+        <image class="ic" src="../../images/card.png" style="width: 30rpx;height: 24rpx;"/>
+        <text class="wz" bindtap="">领取会员卡</text>  
+    </view>
+    <view class="ceslid2">开卡即送测试劵包功能、100积分……</view>
+    <view class="ljjh">立即激活</view>
+  </view> -->
   <!--领取会员卡 end-->
 
+  <!--免费领券 start-->
+  <view class="mflq weui-panel">
+
+  </view>
+  <!--免费领券 end-->
+
   <!--文本栏 start-->
-  <view class="weui-cells weui-cells_after-title" class="ebl weui-panel bordertb" style="margin-top: 9px;">
+  <view class="weui-cells weui-cells_after-title" class="ebl weui-panel bordertb">
       <view class="weui-cell">
           <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
               <image src="../../images/1.png" class="ic"/>

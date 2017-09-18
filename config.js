@@ -10,11 +10,12 @@ var apiname = 'ws7test';
 var apipass = '69534b32ab51f8cb802720d30fedb523';
 
 // var host = "https://diancan.wshoto.com/";
+// var host = "https://jingdong.wshoto.com/";
 //友回忆炸串炒饭的接口参数
 // var storeid = '&i=3&storeid=6&weid=3';
 // var ids = '&i=3&id=6&weid=3';
 // var apiname = 'diancan-yhy';
-// var  apipass = '69534b32ab51f8cb802720d30fedb523';
+var  apipass = '69534b32ab51f8cb802720d30fedb523';
 //王兴记的接口参数
 // var storeid = '&i=9&storeid=5&weid=9';
 // var ids = '&i=9&id=5&weid=9';

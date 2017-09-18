@@ -23,12 +23,15 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    var data = wx.getStorageSync('queue');
-    var numkk = Number(data.cur_queue.num) - Number(data.wait_count);
-    this.setData({
-      m: data,
-      numkk: numkk
-    });
+    //获取数据
+    var postdata = {};
+    ajax(queue, postdata, function (res) {
+      var numkk = Number(res.data.cur_queue.num) - Number(res.data.wait_count);
+      that.setData({
+        m: res.data,
+        numkk: numkk
+      });
+    }, true);
   },
   shuax: function () {
     var that = this;

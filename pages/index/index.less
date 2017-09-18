@@ -21,7 +21,7 @@
     .weui-media-box::before{
         content:none;        
     }
-    border-bottom: @jianju solid #F3F3F3;
+    border-bottom: @jianju solid @bg;
     .weui-media-box__title{
         margin-top:-20rpx;        
     }
@@ -95,7 +95,46 @@
 
 //领取会员卡
 .lqhyk{
-    height: 90px;
-    margin-top: @jianju;
+    height: 85px;
+    margin-top: 15rpx;
     margin-bottom: @jianju;
+    position: relative;
+    .ceslid{
+        margin-left: 30rpx;
+        margin-top: 30rpx;
+        .wz{
+            margin-left: 30rpx;
+        }
+    }
+    .ljjh{
+        background-image: url('../../images/ljjh.png');
+        background-repeat:no-repeat;
+        background-size:100% 100%;
+        width: 172rpx;
+        position: absolute;
+        top: 30rpx;
+        right: 30rpx;
+        height: 60rpx;
+        color: #fff;
+        text-align: center;
+        line-height: 60rpx;
+        font-size: 14px;
+    }
+    .ceslid2{
+        margin-left: 90rpx;
+        margin-top: 15rpx;
+        width: 400rpx;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        word-wrap: break-word;
+        word-break: break-all;
+        font-size: 13px;
+        color: #FF7C56;
+    }
+}
+
+//免费领券
+.mflq{
+    
 }
