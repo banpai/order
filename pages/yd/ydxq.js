@@ -29,7 +29,9 @@ Page({
       var btime = res.data.store.begintime;
       var endtime =  res.data.store.endtime;
       var begintime = btime + '-' + endtime;
+      console.log(res.data);
       that.setData({
+        data: res.data,
         begintime: begintime,
         btime: btime,
         endtime: endtime
@@ -42,9 +44,9 @@ Page({
     });
   },
   skipyd: function(o){
-    var time = o.currentTarget.dataset.time;
+    var timeid = o.currentTarget.dataset.timeid;
     console.log(this.data.riqi);
-    var url = 'ydinput?time=' + time + '&riqi=' + this.data.riqi +  '&begintime=' + this.data.begintime +  '&btime=' + this.data.btime +  '&endtime=' + this.data.endtime;
+    var url = 'ydinput?timeid=' + timeid + '&riqi=' + this.data.riqi +  '&begintime=' + this.data.begintime +  '&btime=' + this.data.btime +  '&endtime=' + this.data.endtime;
     wx.navigateTo({
       url: url
     });

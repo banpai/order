@@ -7,6 +7,7 @@
     <view class="weui-cell__ft" wx:if="{{xs.order.dining_mode == '1'}}">点餐</view>
     <!-- <view class="weui-cell__ft" wx:if="{xs.dining_mode == '1'}"></view> -->
     <view class="weui-cell__ft" wx:if="{{xs.order.dining_mode == '2'}}">外卖</view>
+    <view class="weui-cell__ft" wx:if="{{xs.order.dining_mode == '3'}}">预定</view>
   </view>
   <view class="weui-cell weui-cell_access">
     <view class="weui-cell__bd">

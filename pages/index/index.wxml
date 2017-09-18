@@ -70,9 +70,7 @@
   <!--加一个图片 end-->
 
   <!--领取会员卡 start-->
-  <view class="lqhyk">
-
-  </view>
+  <!-- <view class="lqhyk"></view> -->
   <!--领取会员卡 end-->
 
   <!--文本栏 start-->

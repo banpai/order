@@ -6,6 +6,7 @@ const onloadstart = require('../../utils/util.js').onloadstart;
 var app = getApp();
 //获取排队的接口
 const reservationdetail = require('../../config').reservationdetail;
+const podc = require('../../config').podc;
 const ajax = require('../../utils/util.js').ajax;
 
 //封装tusi
@@ -35,7 +36,8 @@ Page({
     time: '',
     address: "",
     addrdetail: "",
-    sex: "1",
+    sex: "0",
+    bz: '',
     paymoney: '',
     radioItems: [
       { 
@@ -61,6 +63,7 @@ Page({
     var data = JSON.parse(wx.getStorageSync('letdata'));
     if(data){
       that.setData({
+        costdata: data,
         cost: data.cost
       })
     };
@@ -76,15 +79,37 @@ Page({
   onLoad: function (options) {
     this.setData({
       riqi: options.riqi,
-      time: options.begintime
+      time: options.begintime,
+      options: options
     });
     //添加尾部技术支持的信息
     getFooter.call(this);
     var that = this;
     //获取数据
-    var postdata = {};
+    var postdata = {
+      timeid: options.timeid
+    };
     ajax(reservationdetail, postdata, function (res) {
-      console.log(res);
+      var msg1 = '预付￥' + res.data.tablezones.reservation_price;
+      var msg2 = '￥'+res.data.tablezones.limit_price+ '起订'; 
+      console.log(res.data.tablezones.reservation_price);
+      that.setData({
+        data: res.data,
+        cost: res.data.tablezones.reservation_price,
+        radioItems: [
+          { 
+            name: '只订座', 
+            value: '0' , 
+            checked: true,
+            msg: msg1
+          },
+          { 
+            name: '提前下单', 
+            value: '1',
+            msg: msg2
+          }
+        ]
+      });
     }, true);
   },
   ceshiradio: function(){
@@ -96,6 +121,10 @@ Page({
         wx.navigateTo({
           url: url
         })
+      }else{
+        that.setData({
+          cost: that.data.data.tablezones.reservation_price
+        });
       }
     }, 1);
   },
@@ -121,42 +150,66 @@ Page({
   //提交订单
   sub: function (e) {
     var that = this;
+    var cost = that.data.data.tablezones.reservation_price;
+    if(that.data.sex == 1){
+      var len = +that.data.costdata.cost - that.data.data.tablezones.limit_price;
+      if(len < 0){
+        tusi('￥' + that.data.data.tablezones.limit_price + '起订');
+        var number = that.data.costdata.number;
+        var order = that.data.costdata.order;
+        return;
+      }else{
+        cost = that.data.data.tablezones.limit_price;
+      }
+    }
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
     if (this.data.name === '') {
       tusi('请填写姓名');
     } else if (this.data.tel === '') {
       tusi('请填写手机号');
-    } else if (!myreg.test(that.data.tel)) {
-      tusi('请输入有效的手机号');
-    } else if (this.data.address === '') {
-      tusi('请输入地址');
-    } else if (this.data.addrdetail === '') {
-      tusi('请输入详细地址');
     } else {
       var mymsgwm = {
         name: that.data.name,
         tel: that.data.tel,
         sex: that.data.sex,
-        address: that.data.address,
-        addrdetail: that.data.addrdetail
+        bz: that.data.bz,
+        flag: 3,
+        type: 'add',
+        number: number,
+        cost: cost,
+        meal_time: that.data.options.riqi,
+        begintime: that.data.options.begintime,
+        endtime: that.data.options.endtime,
+        order: order,
+        tablezonesid:  that.data.options.timeid
       };
-      var str = JSON.stringify(mymsgwm);
+      app.ajax(podc, mymsgwm, function(res){
+        console.log(res);
+        //这边支付接口传回的参数需要重新处理
+        var id = res.data.orderid;
+        var url = '../payment/payment?id=' + id;
+        tusi('提交成功', true, function () {
+          wx.redirectTo({
+            url: url
+          })
+        }, true);
+      }, true);
       //存本地缓存
-      wx.setStorage({
-        key: "mymsgwm",
-        data: str,
-        complete: function () {
-          //差一个post提交数据
-          var id = '0';
-          var url = '../dcxz/dcxzwm?id=' + id;
-          tusi('开发中');
-          // tusi('提交成功', true, function () {
-          //   wx.redirectTo({
-          //     url:url
-          //   });
-          // });
-        }
-      })
+      // wx.setStorage({
+      //   key: "mymsgwm",
+      //   data: str,
+      //   complete: function () {
+      //     //差一个post提交数据
+      //     var id = '0';
+      //     var url = '../dcxz/dcxzwm?id=' + id;
+      //     tusi('开发中');
+      //     // tusi('提交成功', true, function () {
+      //     //   wx.redirectTo({
+      //     //     url:url
+      //     //   });
+      //     // });
+      //   }
+      // })
     }
   },
   //同步姓名
@@ -175,6 +228,12 @@ Page({
   address: function (e) {
     this.setData({
       address: e.detail.value
+    })
+  },
+  //同步备注
+  bz: function (e) {
+    this.setData({
+      bz: e.detail.value
     })
   },
   //电话
